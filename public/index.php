@@ -11,12 +11,12 @@ require __DIR__ . '/../vendor/autoload.php';
 $app = AppFactory::create();
 
 
-
-$twig = Twig::create('view/', ['cache' => false]);
-
-$app = AppFactory::create();
-
-$app->add(TwigMiddleware::create($app, $twig));
+try {
+    $twig = Twig::create('view/', ['cache' => false]);
+    $app->add(TwigMiddleware::create($app, $twig));
+} catch (Throwable $e) {
+    echo $e->getMessage();
+}
 
 
 error_reporting(E_ALL ^ E_DEPRECATED);
