@@ -1,0 +1,41 @@
+## VSCode
+.vscode/
+
+## JetBrains IDE
+*.iml
+*.xml
+*.iws
+.idea/
+
+## Laravel
+vendor/
+node_modules/
+npm-debug.log
+composer.lock
+
+## Mac
+.DS_Store
+
+## Docker
+.vagrant*
+bin
+docker/docker
+.docker
+.*.swp
+a.out
+*.orig
+build_src
+.flymake*
+.idea
+docs/_build
+docs/_static
+docs/_templates
+.gopath/
+.dotcloud
+*.test
+bundles/
+.hg/
+.git/
+vendor/pkg/
+pyenv
+Vagrantfile
