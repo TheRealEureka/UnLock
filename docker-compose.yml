@@ -1,0 +1,26 @@
+version: '3'
+services:
+    php:
+      image: composer:latest
+      command: php -S 0.0.0.0:8080
+      working_dir: /app/public
+      ports:
+        - 8080:8080
+      volumes:
+        - .:/app
+      depends_on:
+        - mariadb
+
+    mariadb:
+      image: mariadb:latest
+      restart: on-failure
+      ports:
+        - 3306:3306
+      environment:
+        - MARIADB_DATABASE=test
+        - MARIADB_ROOT_USER=root
+        - MARIADB_ROOT_PASSWORD=root
+        - MARIADB_USER=test
+        - MARIADB_PASSWORD=test
+      volumes:
+        - ./.docker/mariadb:/var/lib/mysql
