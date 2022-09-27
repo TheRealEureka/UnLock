@@ -1,8 +1,8 @@
 # UnLock
-[Tristan BELMONT](https://github.com/MaegIins),
-[Kévin BULLY CIMBALURIA](https://github.com/TheRealEureka),
-[Lucas FARRONI](https://github.com/lucasfarroni),
-[Clément PERRIN](https://github.com/Alfiov).
+[Tristan BELMONT](https://github.com/MaegIins)  
+[Kévin BULLY CIMBALURIA](https://github.com/TheRealEureka)  
+[Lucas FARRONI](https://github.com/lucasfarroni)  
+[Clément PERRIN](https://github.com/Alfiov)  
 
 # Installer Docker et composer
 
