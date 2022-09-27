@@ -1,21 +1,28 @@
 <?php
 
-use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Slim\App;
-use Slim\Container;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
 
-require 'vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
+/**
+ * Instantiate App
+ *
+ * In order for the factory to work you need to ensure you have installed
+ * a supported PSR-7 implementation of your choice e.g.: Slim PSR-7 and a supported
+ * ServerRequest creator (included with Slim PSR-7)
+ */
+$app = AppFactory::create();
 
 error_reporting(E_ALL ^ E_DEPRECATED);
 
-$container = new Container(['settings' => ['displayErrorDetails' => true]]);
-$app = new App($container);
+
 //DEFAULT
 $app->get('/',
     function (Request $rq, Response $rs): Response {
-    return $rs->write("aled");
+        $rs->getBody()->write("Aled");
+        return $rs;
 });
 
 try {
