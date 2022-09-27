@@ -1,4 +1,9 @@
-# docker-compose PHP MariaDB slim4 Boilerplate
+# UnLock
+Tristan Belmont
+Lucas Farroni
+Clément Perrin
+Kévin Bully Cimbaluria
+# Installer Docker et composer
 
 1. start and get logs
 
