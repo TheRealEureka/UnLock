@@ -12,7 +12,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $app = AppFactory::create();
 
-ConnectionFactory::setConfig("public/conf/conf.ini");
+ConnectionFactory::setConfig(__DIR__ . '/../conf/conf.ini');
 
 
 try {
