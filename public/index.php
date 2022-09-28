@@ -5,14 +5,12 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
-use Unlock\Utility\ConnectionFactory;
 
 //Auto load
 require __DIR__ . '/../vendor/autoload.php';
 
 $app = AppFactory::create();
 
-ConnectionFactory::setConfig(__DIR__ . '/../conf/conf.ini');
 
 
 try {
