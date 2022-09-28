@@ -5,10 +5,14 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
+use Unlock\Utility\ConnectionFactory;
 
+//Auto load
 require __DIR__ . '/../vendor/autoload.php';
 
 $app = AppFactory::create();
+
+ConnectionFactory::setConfig("public/conf/conf.ini");
 
 
 try {
@@ -25,7 +29,8 @@ $app->get('/twig/{id}',
     function (Request $rq, Response $rs, array $args) : Response {
        $view = Twig::fromRequest($rq);
        return $view->render($rs, 'test.html', [
-            'id' => $args['id']
+            'id' => $args['id'],
+            'users' => array("john", "alex", "jane", "joe")
         ]);
     });
 
