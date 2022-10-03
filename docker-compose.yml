@@ -17,7 +17,7 @@ services:
       ports:
         - 3306:3306
       environment:
-        - MARIADB_DATABASE=test
+        - MARIADB_DATABASE=unlock
         - MARIADB_ROOT_USER=root
         - MARIADB_ROOT_PASSWORD=root
         - MARIADB_USER=test
