@@ -7,8 +7,14 @@
 <body>
 {{id}}
 
+{% if id == NAN %}
+{% set id = 1 %}
+{% endif %}
+
+
 {% for user in users %}
-    <li>{{ user|e }}</li>
+<li>{{id}} {{ user|e }}</li>
+
 {% endfor %}
 </body>
 </html>
