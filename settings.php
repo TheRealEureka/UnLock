@@ -41,7 +41,7 @@ return [
             // of valid parameters: https://www.doctrine-project.org/projects/doctrine-dbal/en/current/reference/configuration.html
             'connection' => [
                 'driver' => 'pdo_mysql',
-                'host' => 'unlock-mariadb-1',
+                'host' => 'mariadb',
                 'port' => 3306,
                 'dbname' => 'unlock',
                 'user' => 'root',
