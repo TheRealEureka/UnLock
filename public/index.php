@@ -28,8 +28,12 @@ error_reporting(E_ALL ^ E_DEPRECATED);
 $app->get('/twig/{id}',
     function (Request $rq, Response $rs, array $args) : Response {
        $view = Twig::fromRequest($rq);
+       $id = $args['id'];
+       if (gettype($id) == 'string') {
+        $id = (int)$id;
+       }
        return $view->render($rs, 'test.html', [
-            'id' => $args['id'],
+            'id' => $id,
             'users' => array("john", "alex", "jane", "joe")
         ]);
     });
