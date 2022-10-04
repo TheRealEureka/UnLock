@@ -5,8 +5,7 @@
         "slim/twig-view": "^3.3",
         "ext-pdo": "*",
         "doctrine/orm": "^2.13",
-        "symfony/cache": "^6.1",
-        "doctrine/annotations": "^1.13"
+        "symfony/cache": "^6.1"
     },
     "autoload": {
         "psr-4": {
