@@ -3,12 +3,14 @@
         "slim/slim": "4.*",
         "slim/psr7": "^1.5",
         "slim/twig-view": "^3.3",
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "doctrine/orm": "^2.13",
+        "symfony/cache": "^6.1",
+        "doctrine/annotations": "^1.13"
     },
     "autoload": {
         "psr-4": {
-            "Unlock\\": "./public",
-            "Unlock\\Utility\\": "./public/utility"
+            "Unlock\\": "./public"
         }
     }
 }
