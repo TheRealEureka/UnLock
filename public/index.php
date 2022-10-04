@@ -34,7 +34,7 @@ $app->get('/twig/{id}',
 
 $app->get('/',
     function (Request $rq, Response $rs): Response {
-        $rs->getBody()->write("Cette page fonctionne tres bien ;)");
+        $rs->getBody()->write("Je suis un grand travailleur ;)");
         return $rs;
 });
 
