@@ -2,19 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Twig {{id}}</title>
 </head>
 <body>
 {{id}}
 
-{% if id == NAN %}
-{% set id = 1 %}
-{% endif %}
+
 
 
 {% for user in users %}
-<li>{{id}} {{ user|e }}</li>
+{% for user in users %}
 
+<li>{{id}} {{ user|e }}</li>
+{% set id = id + 1 %}
+{% endfor %}
 {% endfor %}
 </body>
 </html>
