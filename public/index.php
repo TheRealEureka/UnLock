@@ -11,6 +11,8 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $app = AppFactory::create();
 
+$container = require __DIR__ . '/../bootstrap.php';
+AppFactory::setContainer($container);
 
 
 try {
