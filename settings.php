@@ -46,7 +46,7 @@ return [
                 'dbname' => 'unlock',
                 'user' => 'root',
                 'password' => 'root',
-                'charset' => 'utf-8'
+                'charset' => 'UTF8'
             ]
         ]
     ]

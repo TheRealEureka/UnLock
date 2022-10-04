@@ -9,26 +9,14 @@
 1. Démarrer le service Docker
 
 ```
-docker-compose up
+docker-compose up --build
 ```
 
-2. Ouvrir un terminal dans le container php
-
-```
-docker-compose exec --workdir /app php /bin/bash
-```
-
-3. Installer les dépendances avec composer
+2. Installer les dépendances avec composer
 
 ```
 composer update
 ```
 
-4. Installer les dépances PDO
-
-```
-docker-php-ext-install mysqli pdo pdo_mysql
-```
-
-5. Le serveur web est accessible sur le port 8080
+3. Le serveur web est accessible sur le port 8080
 
