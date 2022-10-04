@@ -2,7 +2,6 @@
 use Doctrine\Common\Cache\Psr6\DoctrineProvider;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
-use Psr\Container\ContainerInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use UMA\DIC\Container;
@@ -29,6 +28,10 @@ $cache
 );
 
 return EntityManager::create($settings['doctrine']['connection'], $config);
+});
+
+$container->set(UserService::class, static function (Container $c) {
+    return new UserService($c->get(EntityManager::class));
 });
 
 return $container;
