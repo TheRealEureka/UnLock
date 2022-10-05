@@ -1,29 +1,36 @@
+@import url("https://fonts.google.com/specimen/Fira+Sans?utm_source=bdmtools&utm_medium=siteweb&utm_campaign=google-fonts");
+
+
 html,
 body {
     height: 100%;
     overflow: hidden;
+
+
 }
 
-.sidebar{
+.sidebar {
     display: flex;
     flex-direction: column;
-    border-right: darkgrey 3px solid;
+    border-right: #ffac11 3px solid;
     height: 100%;
     width: 15%;
     position: absolute;
     top: 0;
     left: 0;
-
+    background: rgb(255, 185, 18);
+    background: linear-gradient(164deg, rgb(255, 172, 17) 0%, rgba(255, 194, 80, 1) 35%, rgb(159, 78, 0) 100%);
     align-items: center;
 }
 
-.timer{
-    margin-top: 0px;
+.timer {
+    margin-top: 0;
     font-size: 80px;
     text-align: center;
+    font-family: "Fira Code", system-ui;
 }
 
-.boutons{
+.boutons {
     margin-top: -40px;
     display: flex;
     flex-direction: column;
@@ -36,9 +43,10 @@ body {
     width: 80%;
     height: 60px;
     font-size: 30px;
-    border : darkgrey 1px solid;
+    border: darkgrey 1px solid;
     margin-bottom: 5px;
     border-radius: 10px;
+    font-family: "Fira Code", system-ui;
 }
 
 .button:hover {
@@ -52,7 +60,7 @@ body {
     transform: translateY(4px);
 }
 
-.numpadspace{
+.numpadspace {
     align-content: center;
     width: 80%;
     height: 300px;
@@ -64,11 +72,21 @@ body {
     border: darkgrey 1px solid;
 }
 
-.logo{
+.logo {
     position: absolute;
     bottom: 0;
     left: 0;
     height: 100px;
     width: 100%;
     background: #636363;
+}
+
+.gameSpace {
+    height: 100%;
+    width: 85%;
+    position: absolute;
+    top: 0;
+    left: calc(15% + 3px);
+    background-image: url("../assets/bgGame.jpg");
+    background-size: cover;
 }
