@@ -38,11 +38,9 @@ $app->get('/twig/{id}',
         ]);
     });
 
-$app->get('/',
-    function (Request $rq, Response $rs): Response {
-        $rs->getBody()->write("Je suis un grand travailleur ;)");
-        return $rs;
-});
+
+
+
 
 try {
     $app->run();

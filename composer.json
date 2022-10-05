@@ -6,7 +6,8 @@
         "ext-pdo": "*",
         "doctrine/orm": "^2.13",
         "symfony/cache": "^6.1",
-        "uma/dic": "^3.0"
+        "uma/dic": "^3.0",
+      "ext-http": "*"
     },
     "autoload": {
         "psr-4": {
