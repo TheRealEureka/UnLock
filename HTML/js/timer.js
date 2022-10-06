@@ -1,6 +1,6 @@
 console.log("timer.js loaded");
 
-let timer = "00:05";
+let timer = "60:00";
 
 let timerElement = document.getElementById("timer");
 
