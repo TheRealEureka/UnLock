@@ -91,3 +91,21 @@ body {
     background-image: url("../assets/bgGame.jpg");
     background-size: cover;
 }
+
+#progressbar {
+    margin-top:-80px;
+    margin-bottom: 60px;
+    width:90%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #000000;
+    overflow: hidden;
+}
+
+#progress {
+    width: 1%;
+    height: 30px;
+    background-color: #986600;
+
+
+}

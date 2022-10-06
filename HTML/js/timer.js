@@ -39,6 +39,7 @@ function startTimer() {
 
         if (minutes <= 5) {
             timerElement.style.color = "red";
+            document.getElementById("progress").style.backgroundColor = "red";
         }
 
         timer = minutes + ":" + seconds;
