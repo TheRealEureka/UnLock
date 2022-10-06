@@ -79,6 +79,7 @@ body {
     height: 100px;
     width: 100%;
     background: #636363;
+    border-right: #636363 3px solid;
 }
 
 .gameSpace {
