@@ -1,33 +1,26 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="FR">
 <head>
     <meta charset="UTF-8">
-    <title>UNLOCK!</title>
+    <title>UNLOCK</title>
     <link rel="stylesheet" href="style/normalizer.css">
-    <link rel="stylesheet" href="style/style.css">
-
+    <link rel="stylesheet" href="style/accueil.css">
 </head>
 <body>
-<div class="sidebar">
-    <p class="timer" id="timer"></p>
-    <div id="progressbar">
-        <div id="progress"></div>
-    </div>
-    <div class="boutons">
-        <button class="button" id="playpauseButton">Pause</button>
-        <button class="button" id="indice">Indice</button>
-        <button class="button" id="machine">Machine</button>
-        <button class="button" id="calc">Calculatrice</button>
-        <button class="button" id="settings">Parametres</button>
-    </div>
-    <div class="numpadspace"></div>
-    <img class="logo" src="assets/UNLOCK.webp">
-</div>
-<div class="gameSpace">
+<div class="lologo"><img id="logo" src="assets/UNLOCK.webp"></div>
 
+<div id="listeBoutons">
+
+    <a href="html/game.html">
+        <button id="play">Jouer</button>
+    </a>
+    <a href="https://github.com/TheRealEureka/UnLock">
+        <button id="github"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png"> Notre repo Github</button>
+    </a>
 </div>
-<script src="js/timer.js"></script>
-<script src="js/pausePlayButton.js"></script>
-<script src="js/progressbar.js"></script>
+
+<p id="credits">Projet scolaire réalisé par Tristan BELMONT, Kevin BULLY CIMBALURIA, Lucas FARONNI et Clément
+    PERRIN.</p>
+
 </body>
 </html>
