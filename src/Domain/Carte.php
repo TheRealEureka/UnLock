@@ -9,16 +9,16 @@ use Doctrine\ORM\Mapping\Table;
 #[Entity, Table(name: 'cartes')]
 final class Carte
 {
-    #[Id, Column(type: 'integer'), GeneratedValue(strategy: 'AUTO')]
+    #[Id, Column( name:'id', type: 'integer'), GeneratedValue(strategy: 'AUTO')]
     private int $id;
 
-    #[Column(type: 'integer', unique: true, nullable: false)]
+    #[Column( name:'numCarte',type: 'integer', unique: true, nullable: false)]
     private string $numCarte;
 
-    #[Column(type: 'integer', unique: true, nullable: false)]
+    #[Column(name :'type',type: 'integer', unique: true, nullable: false)]
     private string $type;
 
-    #[Column(type: 'string', unique: true, nullable: false)]
+    #[Column(name:'cheminImage',type: 'string', unique: true, nullable: false)]
     private string $cheminImage;
 
 
