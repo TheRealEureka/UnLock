@@ -1,4 +1,4 @@
-body{
+body {
     background-image: url("../assets/desertAcc.jpg");
     font-family: "Fira Code", system-ui;
 
@@ -6,7 +6,7 @@ body{
 }
 
 
-#listeBoutons{
+#listeBoutons {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,13 +15,13 @@ body{
     width: 100%;
 }
 
-a{
+a {
     text-decoration: none;
     color: black;
     width: 50%;
 }
 
-#play, #github{
+#play, #github {
     width: 100%;
     height: 100px;
     font-size: 30px;
@@ -29,35 +29,43 @@ a{
     margin-bottom: 5px;
     border-radius: 3px;
 
-    background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(232,232,232,1) 21%, rgba(209,209,209,1) 100%);
+    background: radial-gradient(circle, rgba(255, 181, 70, 1) 0%, rgba(254, 213, 27, 0.711922268907563) 50%, rgba(255, 255, 255, 0) 80%);
     margin-top: 50px;
 }
 
-#github{
+#github {
     margin-top: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#github img{
+#github img {
     margin-right: 20px;
     height: 90%;
+
 }
 
-#play:hover, #github:hover{
 
-    background: linear-gradient(135deg, rgba(204,204,204,1) 0%, rgba(199,199,199,1) 21%, rgba(162,162,162,1) 100%);
-    color: white;
+#play:hover, #github:hover {
+
+    background: radial-gradient(circle, rgba(255, 181, 70, 1) 0%, rgba(254, 213, 27, 0.89) 50%, rgba(255, 255, 255, 0) 80%);
+
+
 }
 
-#play:active, #github:active{
-    background: linear-gradient(135deg, rgba(153,153,153,1) 0%, rgba(148,148,148,1) 21%, rgba(111,111,111,1) 100%);
-    box-shadow: 0 5px #666;
+
+#github img:active {
+    filter: invert(100%);
+}
+
+
+#play:active, #github:active {
+    background: radial-gradient(circle, rgba(255, 181, 70, 1) 0%, rgba(254, 213, 27, 0.89) 50%, rgba(255, 255, 255, 0) 80%);
     transform: translateY(4px);
 }
 
-#credits{
+#credits {
     height: 100px;
     width: 100%;
     display: flex;
@@ -69,15 +77,16 @@ a{
     text-align: center;
 }
 
-.lologo{
-    width:100%;
+.lologo {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.lologo img{
+.lologo img {
     height: 100%;
+
 }
 
 
