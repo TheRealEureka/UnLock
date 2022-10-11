@@ -25,6 +25,7 @@ try {
 
 error_reporting(E_ALL ^ E_DEPRECATED);
 
+/**
 $app->get(
     '/twig/{id}',
     function (Request $rq, Response $rs, array $args): Response {
@@ -39,12 +40,20 @@ $app->get(
         ]);
     }
 );
+*/
 
+$app->get(
+    '/play',
+    function (Request $rq, Response $rs): Response {
+        $view = Twig::fromRequest($rq);
+        return $view->render($rs, 'game.html');
+    }
+);
 $app->get(
     '/',
     function (Request $rq, Response $rs): Response {
-        $rs->getBody()->write("Je suis un grand travailleur ;)");
-        return $rs;
+        $view = Twig::fromRequest($rq);
+        return $view->render($rs, 'index.html');
     }
 );
 
