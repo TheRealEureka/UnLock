@@ -25,22 +25,24 @@ try {
 
 error_reporting(E_ALL ^ E_DEPRECATED);
 
-/**
+
 $app->get(
     '/twig/{id}',
     function (Request $rq, Response $rs, array $args): Response {
         $view = Twig::fromRequest($rq);
         $id = $args['id'];
+        $chars = $id;
         if (gettype($id) == 'string') {
-            $id = (int)$id;
+            $id = strlen($id);
         }
         return $view->render($rs, 'test.html', [
             'id' => $id,
+            'chars' => $chars,
             'users' => array("john", "alex", "jane", "joe")
         ]);
     }
 );
-*/
+
 
 $app->get(
     '/play',
