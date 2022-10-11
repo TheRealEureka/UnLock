@@ -36,14 +36,20 @@ $app->get('/twig/{id}',
             'id' => $id,
             'users' => array("john", "alex", "jane", "joe")
         ]);
+
+
     });
 
+$app->post('/api/test}', function (Request $request , Response $rs) use ($app)
+{
+    $req = $app->$request();
+    echo json_encode($req->post());
 
-
-
-
-try {
-    $app->run();
-} catch (Throwable $e) {
-    echo $e->getMessage();
 }
+/*
+$app->post('/api/test',
+    function (Request $rq, Response $rs) use ($app){
+        $json = $app->$rq->getBody();
+        $data = json_decode($json, true);
+        return $rs->getBody()->write($data);
+    });

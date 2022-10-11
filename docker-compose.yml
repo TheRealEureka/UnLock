@@ -6,7 +6,7 @@ services:
       command: php -S 0.0.0.0:8080
       working_dir: /app/public
       ports:
-        - "8080:8080"
+        - "8084:8084"
       volumes:
         - .:/app
       depends_on:
