@@ -3,7 +3,7 @@ services:
     php:
       build:
           context : ./
-      command: php -S 0.0.0.0:8080
+      command: php -S 0.0.0.0:8084
       working_dir: /app/public
       ports:
         - "8084:8084"

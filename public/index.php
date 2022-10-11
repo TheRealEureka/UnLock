@@ -1,5 +1,6 @@
 <?php
-
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: *');
 use Slim\Factory\AppFactory;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -40,16 +41,19 @@ $app->get('/twig/{id}',
 
     });
 
-$app->post('/api/test}', function (Request $request , Response $rs) use ($app)
+$app->post('/api/test', function (Request $request , Response $rs) use ($app)
 {
     $req = $app->$request();
     echo json_encode($req->post());
+    $view = twig::fromRequest($req);
+    return $view->render($req,'index.html');
 
-}
+});
+
 /*
 $app->post('/api/test',
     function (Request $rq, Response $rs) use ($app){
         $json = $app->$rq->getBody();
         $data = json_decode($json, true);
         return $rs->getBody()->write($data);
-    });
+    });*/
