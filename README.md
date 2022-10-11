@@ -1,22 +1,27 @@
-# UnLock
-[Tristan BELMONT](https://github.com/MaegIins)  
-[Kévin BULLY CIMBALURIA](https://github.com/TheRealEureka)  
-[Lucas FARRONI](https://github.com/lucasfarroni)  
-[Clément PERRIN](https://github.com/Alfiov)  
+![logo UNLOCK!](./public/data/assets/UNLOCK.webp)
+---
+# UNLOCK! - The Escape Game
 
-# Installer Docker et composer
+UNLOCK! is a series of escape room games published by Asmodee Digital. The games are available on iOS, Android, and Steam. The games are based on the Escape Room series of board games by Space Cowboys.  
 
-1. Démarrer le service Docker
+## This is a school project made by:
+
+### [Tristan BELMONT](https://github.com/MaegIins), a really good and beautiful guy
+### [Kévin BULLY CIMBALURIA](https://github.com/TheRealEureka), 🦝 The Raton Master 🦝
+### [Lucas FARRONI](https://github.com/lucasfarroni), full chauve
+### [Clément PERRIN](https://github.com/Alfiov), a big guy
+
+[https://therealeureka.ninja](https://therealeureka.ninja)
+
+# Install docker
+
+1. Start Docker
 
 ```
 docker-compose up --build
 ```
 
-2. Installer les dépendances avec composer
+2. Go to [http://localhost:8080](http://localhost:8080)
 
-```
-composer update
-```
 
-3. Le serveur web est accessible sur le port 8080
 

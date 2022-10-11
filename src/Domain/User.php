@@ -20,6 +20,7 @@ final class User
     #[Column(name: 'registered_at', type: 'datetimetz_immutable', nullable: false)]
     private DateTimeImmutable $registeredAt;
 
+    //ratio
     public function __construct(string $email)
     {
         $this->email = $email;
