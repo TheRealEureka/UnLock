@@ -45,7 +45,7 @@ return [
                 'port' => 3306,
                 'dbname' => 'unlock',
                 'user' => 'eureka@therealeureka',
-                'password' => 'Zizi123$$',
+                'password' => 'pqEMm8Ec',
                 'charset' => 'UTF8',
                 'ssl_ca' => './BaltimoreCyberTrustRoot.crt.pem'
             ]
