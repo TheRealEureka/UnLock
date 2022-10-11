@@ -11,7 +11,7 @@ UNLOCK! is a series of escape room games published by Asmodee Digital. The games
 ### [Lucas FARRONI](https://github.com/lucasfarroni), full chauve
 ### [Clément PERRIN](https://github.com/Alfiov), a big guy
 
-[https://therealeureka.ninja](https://therealeureka.ninja)
+[https://unlock.therealeureka.ninja](https://unlock.therealeureka.ninja)
 
 # Install docker
 
