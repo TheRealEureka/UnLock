@@ -6,25 +6,22 @@ UNLOCK! is a series of escape room games published by Asmodee Digital. The games
 
 ## This is a school project made by:
 
-
 ### [Tristan BELMONT](https://github.com/MaegIins), a really good and beautiful guy
-### [Kévin BULLY CIMBALURIA](https://github.com/TheRealEureka), raton master
+### [Kévin BULLY CIMBALURIA](https://github.com/TheRealEureka), 🦝 The Raton Master 🦝
 ### [Lucas FARRONI](https://github.com/lucasfarroni), full chauve
 ### [Clément PERRIN](https://github.com/Alfiov), a big guy
 
-# Installer Docker et composer
+[https://therealeureka.ninja](https://therealeureka.ninja)
 
-1. Démarrer le service Docker
+# Install docker
+
+1. Start Docker
 
 ```
 docker-compose up --build
 ```
 
-2. Installer les dépendances avec composer
+2. Go to [http://localhost:8080](http://localhost:8080)
 
-```
-composer update
-```
 
-3. Le serveur web est accessible sur le port 8080
 
