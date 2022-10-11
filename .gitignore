@@ -39,3 +39,4 @@ bundles/
 vendor/pkg/
 pyenv
 Vagrantfile
+/.php-cs-fixer.cache
