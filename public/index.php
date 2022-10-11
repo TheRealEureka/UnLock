@@ -25,7 +25,8 @@ try {
 
 error_reporting(E_ALL ^ E_DEPRECATED);
 
-$app->get('/twig/{id}',
+$app->get(
+    '/twig/{id}',
     function (Request $rq, Response $rs, array $args): Response {
         $view = Twig::fromRequest($rq);
         $id = $args['id'];
@@ -36,13 +37,16 @@ $app->get('/twig/{id}',
             'id' => $id,
             'users' => array("john", "alex", "jane", "joe")
         ]);
-    });
+    }
+);
 
-$app->get('/',
+$app->get(
+    '/',
     function (Request $rq, Response $rs): Response {
         $rs->getBody()->write("Je suis un grand travailleur ;)");
         return $rs;
-    });
+    }
+);
 
 try {
     $app->run();
