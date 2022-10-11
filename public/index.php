@@ -1,8 +1,8 @@
 <?php
 
-use Slim\Factory\AppFactory;
-use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 
@@ -26,13 +26,13 @@ try {
 error_reporting(E_ALL ^ E_DEPRECATED);
 
 $app->get('/twig/{id}',
-    function (Request $rq, Response $rs, array $args) : Response {
-       $view = Twig::fromRequest($rq);
-       $id = $args['id'];
-       if (gettype($id) == 'string') {
-        $id = (int)$id;
-       }
-       return $view->render($rs, 'test.html', [
+    function (Request $rq, Response $rs, array $args): Response {
+        $view = Twig::fromRequest($rq);
+        $id = $args['id'];
+        if (gettype($id) == 'string') {
+            $id = (int)$id;
+        }
+        return $view->render($rs, 'test.html', [
             'id' => $id,
             'users' => array("john", "alex", "jane", "joe")
         ]);
@@ -42,7 +42,7 @@ $app->get('/',
     function (Request $rq, Response $rs): Response {
         $rs->getBody()->write("Je suis un grand travailleur ;)");
         return $rs;
-});
+    });
 
 try {
     $app->run();
