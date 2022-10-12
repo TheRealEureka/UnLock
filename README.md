@@ -13,15 +13,21 @@ UNLOCK! is a series of escape room games published by Asmodee Digital. The games
 
 [https://unlock.therealeureka.ninja](https://unlock.therealeureka.ninja)
 
-# Install docker
+# Start App
 
-1. Start Docker
+1. Install packages
+
+```
+composer update
+```
+
+2. Start Docker
 
 ```
 docker-compose up --build
 ```
 
-2. Go to [http://localhost:8080](http://localhost:8080)
+3. Go to [http://localhost:8080](http://localhost:8080)
 
 # Having troubles ?
 
