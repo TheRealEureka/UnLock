@@ -19,6 +19,10 @@ return [
             // Doesn't do anything when 'logErrors' is false.
             'logErrorDetails' => true,
         ],
+        'logger' =>[
+            'name' => 'app',
+            'path' => APP_ROOT . '/logs/app.log',
+        ],
 
         'doctrine' => [
             // Enables or disables Doctrine metadata caching

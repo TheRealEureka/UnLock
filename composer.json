@@ -6,6 +6,7 @@
         "ext-pdo": "*",
         "doctrine/orm": "^2.13",
         "symfony/cache": "^6.0",
+        "monolog/monolog": "^3.2",
         "uma/dic": "^3.0"
     },
     "autoload": {
