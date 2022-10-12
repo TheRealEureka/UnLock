@@ -1,6 +1,7 @@
 <?php
 
 // src/Domain/User.php
+namespace Unlock\Domain;
 
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;

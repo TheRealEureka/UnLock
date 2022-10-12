@@ -11,7 +11,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Unlock\\": "./public"
+            "Unlock\\": "./public",
+            "Unlock\\Domain\\": "./src/Domain"
         }
     }
 }
