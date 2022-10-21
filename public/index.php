@@ -26,7 +26,13 @@ try {
 
 
 error_reporting(E_ALL ^ E_DEPRECATED);
+//Pour acceder a request.html
+$app->get('/test/post', function (Request $request, Response $response) {
+    $view = Twig::fromRequest($request);
+    return $view->render($response, 'request.html', []);
+});
 
+//Exemple de route de l'API qui retourne le tableau des POST
 $app->post('/test/post', function (Request $request, Response $response) {
     $data = json_decode($request->getBody(), true);
     $response->getBody()->write(json_encode(array('status' => 'ok', 'data' => $data)));
