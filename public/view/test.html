@@ -1,21 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Twig {{chars}}</title>
+    <meta charset="utf-8" />
+    <title>{$pageTitle}</title>
 </head>
+
 <body>
-{{chars}}
-
-
-
-
-{% for user in users %}
-{% for user in users %}
-
-<li>{{id}} {{ user|e }}</li>
-{% set id = id + 1 %}
-{% endfor %}
-{% endfor %}
+{$data}
 </body>
 </html>

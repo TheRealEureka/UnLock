@@ -64,3 +64,12 @@ try {
 } catch (Throwable $e) {
     echo $e->getMessage();
 }
+
+
+$app->post('/test', function (Request $request, Response $response): Response {
+    $json = $request->getParsedBody();
+    $data = json_decode($json, true);
+    $response->getBody()->write($data);
+    $view = Twig::fromRequest($request);
+    return $view->render($response, 'test.html');
+});
