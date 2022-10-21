@@ -1,4 +1,6 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: Content-Type");
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -25,6 +27,11 @@ try {
 
 error_reporting(E_ALL ^ E_DEPRECATED);
 
+$app->post('/test/post', function (Request $request, Response $response) {
+    $data = json_decode($request->getBody(), true);
+    $response->getBody()->write(json_encode(array('status' => 'ok', 'data' => $data)));
+    return $response;
+});
 
 $app->get(
     '/twig/{id}',
