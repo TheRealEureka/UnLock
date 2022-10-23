@@ -8,4 +8,4 @@ RUN apt-get update && apt-get install -y \
 
 RUN docker-php-ext-install pdo pdo_mysql
 
-COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+COPY --from=composer:2.4.3 /usr/bin/composer /usr/local/bin/composer
