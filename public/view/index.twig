@@ -8,7 +8,6 @@
 </head>
 <body>
 <div class="lologo"><img id="logo" src="../data/assets/UNLOCK.webp" alt="logo" ></div>
-
 <div id="listeBoutons">
 
     <a href="/play">
@@ -18,7 +17,30 @@
         <button id="github"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="logo_github"> Notre repo Github</button>
     </a>
 </div>
-
+{% if conn == false %}
+<div class="forms">
+    <form class="login" method="post" action="/login">
+        <label for="username">Nom d'utilisateur :
+        <input type="text" name="username" /></label>
+        <label for="password">Mot de passe :
+        <input type="password" name="password" /></label>
+        <input type="submit" value="Se connecter" />
+    </form>
+    <div class="separator"></div>
+    <form class="signup" method="post" action="/signup">
+        <label for="username">Nom d'utilisateur :
+        <input type="text" name="username" /></label>
+        <label for="password">Mot de passe :
+        <input type="password" name="password" /></label>
+        <label for="password_comfirm">Répétez le mot de passe :
+        <input type="password" name="password_comfirm" /></label>
+        <input type="submit" value="S'inscrire" />
+    </form>
+</div>
+{% else %}
+<p>Bonjour {{ name }} !</p>
+<a href="/logout">Se déconnecter</a>
+{% endif %}
 <p id="credits">Projet scolaire réalisé par Tristan BELMONT, Kevin BULLY CIMBALURIA, Lucas FARRONI et Clément
     PERRIN.</p>
 

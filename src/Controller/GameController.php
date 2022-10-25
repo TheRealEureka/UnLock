@@ -27,7 +27,9 @@ class GameController
      */
     public function start(ServerRequestInterface $request, ResponseInterface $response, array $args) : ResponseInterface
     {
-        return $this->view->render($response, 'index.twig');
+        return $this->view->render($response, 'index.twig',[
+            'conn' => isset($_SESSION['user_id'])
+        ]);
     }
 
     /**
@@ -45,4 +47,15 @@ class GameController
         $response = $response->withStatus(302);
         return $response->withHeader('Location', '/play');
     }
+
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     */
+    public function loose(ServerRequestInterface $request, ResponseInterface $response, array $args) : ResponseInterface
+    {
+            return $this->view->render($response, 'loose.html');
+    }
+
 }

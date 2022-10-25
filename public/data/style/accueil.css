@@ -89,6 +89,16 @@ a {
 
 }
 
-
-
-
+.forms{
+    width: 100%;
+    height: 150px;
+    padding:5px;
+    background: rgba(255, 181, 70, 1) ;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.forms form {
+    display: flex;
+    flex-direction: column;
+}

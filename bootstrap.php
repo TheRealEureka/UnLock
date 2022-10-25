@@ -1,7 +1,9 @@
 <?php
 
 use App\Controller\GameController;
+use App\Controller\UserController;
 use App\Service\GameService;
+use App\Service\UserService;
 use Doctrine\Common\Cache\Psr6\DoctrineProvider;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
@@ -71,6 +73,15 @@ $container->set(GameService::class, static function (Container $c) {
 $container->set(gameController::class, static function (ContainerInterface $container) {
     $view = $container->get('view');
     return new gameController($view, $container->get(GameService::class));
+});
+
+$container->set(UserService::class, static function (Container $c) {
+    return new UserService($c->get(EntityManager::class), $c->get(LoggerInterface::class));
+});
+
+$container->set(UserController::class, static function (ContainerInterface $container) {
+    $view = $container->get('view');
+    return new UserController($view, $container->get(UserService::class));
 });
 
 return $container;
