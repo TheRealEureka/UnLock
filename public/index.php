@@ -79,7 +79,8 @@ $app->get(
     }
 )
 ;
-$app->get('/play/display/{id}', function (Request $rq, Response $rs, array $args): Response {
+$app->post('/display', function (Request $rq, Response $rs): Response {
+    $args = json_decode($rq->getBody(), true);
     $id = strtoupper($args['id']);
     if (isset($_SESSION["currents_cars"])) {
         if (!in_array($id, $_SESSION["currents_cars"]) && Utils\CardResolver::exist($id)) {
@@ -91,7 +92,8 @@ $app->get('/play/display/{id}', function (Request $rq, Response $rs, array $args
     return $rs->withHeader('Location', '/play');
 });
 
-$app->get('/play/hide/{id}', function (Request $rq, Response $rs, array $args): Response {
+$app->post('/hide', function (Request $rq, Response $rs): Response {
+    $args = json_decode($rq->getBody(), true);
     $id = strtoupper($args['id']);
     if (isset($_SESSION["currents_cars"])) {
         if (in_array($id, $_SESSION["currents_cars"])) {

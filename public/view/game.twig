@@ -32,10 +32,15 @@
 
         {% endfor %}
 
-            <div class="eigth"><label for="name">enter an action command:</label>
+            <div class="eigth">
+                <form action="/display" method="post">
+                    <label for="id">enter an action command:</label>
 
-                <input type="text" id="name" name="name" required
-                       minlength="4" maxlength="8" size="10"></div>
+                <input type="text" id="id" name="id" required
+                       minlength="1" maxlength="8" size="10">
+                <input type="submit" value="Submit">
+        </form>
+            </div>
     </div>
 
 </div>
