@@ -57,15 +57,14 @@
         {% for card in cards_back %}
             <img src="../data/assets/cards/{{ card.image_back }}" alt="{{ card.image_back }}" class="carte carte_small"/>
         {% endfor %}
+    </div>
 </div>
 
 <script src="../data/js/timer.js"></script>
-<script src="../data/js/pausePlayButton.js"></script>
-<script src="../data/js/progressbar.js"></script>
 <script src="../data/js/interact.js"></script>
 
 <script>
-    startTimer("{{ timer_start }}");
+ startTimer("{{ timer_start }}");
 </script>
 </body>
 </html>

@@ -3,6 +3,7 @@ console.log("timer.js loaded");
 let timer = "60:00";
 
 let timerElement = document.getElementById("timer");
+let elem = document.getElementById("progress");
 
 let interval;
 
@@ -28,6 +29,7 @@ function startTimer(time = '60:00') {
     let seconds = timerArray[1];
 
     interval = setInterval(function () {
+
         seconds--;
         if (seconds < 0) {
             minutes--;
@@ -59,16 +61,12 @@ function startTimer(time = '60:00') {
         }
 
         timer = minutes + ":" + seconds;
+        elem.style.width = ((60-minutes) * 1.66) + "%";
+
         timerElement.innerText = timer;
     }, 1000);
 
 
 }
-
-
-function stopTimer() {
-    clearInterval(interval);
-}
-
 
 
