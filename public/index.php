@@ -37,30 +37,9 @@ $app->get(
 
 
 $app->get('/play', \App\Controller\CardController::class . ':show');
+$app->post('/display', \App\Controller\CardController::class . ':addCard');
+$app->post('/hide', \App\Controller\CardController::class . ':hideCard');
 
-$app->post('/display', function (Request $rq, Response $rs): Response {
-    $id = strtoupper($rq->getParsedBody()['id']);
-    if (isset($_SESSION["currents_cars"])) {
-        if (!in_array($id, $_SESSION["currents_cars"]) && Utils\CardResolver::exist($id)) {
-            $_SESSION["currents_cars"][] = $id;
-        }
-    }
-
-    $rs = $rs->withStatus(302);
-    return $rs->withHeader('Location', '/play');
-});
-
-$app->post('/hide', function (Request $rq, Response $rs): Response {
-    $id = strtoupper($rq->getParsedBody()['id']);
-    if (isset($_SESSION["currents_cars"])) {
-        if (in_array($id, $_SESSION["currents_cars"])) {
-            unset($_SESSION["currents_cars"][array_search($id, $_SESSION["currents_cars"])]);
-        }
-    }
-
-    $rs = $rs->withStatus(302);
-    return $rs->withHeader('Location', '/play');
-});
 
 $app->get('/reset', function (Request $rq, Response $rs): Response {
     session_destroy();

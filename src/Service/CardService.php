@@ -23,4 +23,11 @@ final class CardService
 
         return $req == null ? null : $req;
     }
+
+    public function exist(string $id) : bool
+    {
+        $req = $this->em->getRepository(\App\Domain\Card::class)->findBy(['numCarte' => $id]);
+        $this->logger->info("CardService::exist($id)");
+        return !($req == null);
+    }
 }

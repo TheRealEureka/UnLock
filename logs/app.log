@@ -1,3 +1,7 @@
 [2022-10-25T11:46:46.399390+00:00] app.INFO: CardService::get [] []
 [2022-10-25T11:47:01.568769+00:00] app.INFO: CardService::get [] []
 [2022-10-25T11:50:33.945364+00:00] app.INFO: CardService::getArray (     [0] => App\Domain\Card Object         (             [id:App\Domain\Card:private] => 43             [numCarte:App\Domain\Card:private] => P1             [image:App\Domain\Card:private] => p1.png             [type:App\Domain\Card:private] => piece             [use:App\Domain\Card:private] => []         )  )  [] []
+[2022-10-25T11:55:35.799017+00:00] app.INFO: CardService::get(P1) [] []
+[2022-10-25T11:55:40.058858+00:00] app.INFO: CardService::exist(24) [] []
+[2022-10-25T11:55:40.562222+00:00] app.INFO: CardService::get(P1) [] []
+[2022-10-25T11:55:40.571332+00:00] app.INFO: CardService::get(24) [] []

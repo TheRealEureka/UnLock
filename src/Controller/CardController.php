@@ -44,7 +44,6 @@ class CardController
         foreach ($_SESSION["currents_cars"] as $key => $value) {
             $card = $this->cardService->get($value);
             if ($card != null && isset($card[0])) {
-
                 $cards[$key] = $card[0]->getImage();
             } else {
                 unset($_SESSION["currents_cars"][$key]);
@@ -54,6 +53,31 @@ class CardController
              'cards' =>  $cards,
              'timer_start' => $time
          ]);
+    }
 
+    public function addCard(ServerRequestInterface $request, ResponseInterface $response, array $args) : ResponseInterface
+    {
+        $id = strtoupper($request->getParsedBody()['id']);
+        if (isset($_SESSION["currents_cars"])) {
+            if (!in_array($id, $_SESSION["currents_cars"]) && $this->cardService->exist($id)) {
+                $_SESSION["currents_cars"][] = $id;
+            }
+        }
+
+        $response = $response->withStatus(302);
+        return $response->withHeader('Location', '/play');
+    }
+
+    public function hideCard(ServerRequestInterface $request, ResponseInterface $response, array $args) : ResponseInterface
+    {
+        $id = strtoupper($request->getParsedBody()['id']);
+        if (isset($_SESSION["currents_cars"])) {
+            if (in_array($id, $_SESSION["currents_cars"])) {
+                unset($_SESSION["currents_cars"][$id]);
+            }
+        }
+
+        $response = $response->withStatus(302);
+        return $response->withHeader('Location', '/play');
     }
 }
