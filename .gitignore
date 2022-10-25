@@ -6,6 +6,7 @@
 *.xml
 *.iws
 .idea/
+composer.phar
 
 ## Laravel
 vendor/
