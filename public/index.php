@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
@@ -21,7 +21,6 @@ try {
 } catch (Throwable $e) {
     echo $e->getMessage();
 }
-
 
 error_reporting(E_ALL ^ E_DEPRECATED);
 
@@ -47,8 +46,28 @@ $app->get(
 $app->get(
     '/play',
     function (Request $rq, Response $rs): Response {
+        $time = "60:00";
+
+        if (isset($_SESSION['user_time'])) {
+            $time = date_diff(new DateTime(), new DateTime(date('m/d/Y H:i:s', $_SESSION['user_time'])))->format('%i:%s');
+        } else {
+            $date = new DateTimeImmutable();
+            $_SESSION['user_time'] = $date->getTimestamp();
+        }
+
+
         $view = Twig::fromRequest($rq);
-        return $view->render($rs, 'game.html');
+        return $view->render($rs, 'game.twig', [
+            'cards' => array("A", "2", "3", "4", "5", "6", "7"),
+            'timer_start' => $time
+        ]);
+    }
+);
+$app->get(
+    '/test',
+    function (Request $rq, Response $rs): Response {
+        $view = Twig::fromRequest($rq);
+        return $view->render($rs, 'test.html');
     }
 );
 $app->get(
@@ -64,12 +83,3 @@ try {
 } catch (Throwable $e) {
     echo $e->getMessage();
 }
-
-
-$app->post('/test', function (Request $request, Response $response): Response {
-    $json = $request->getParsedBody();
-    $data = json_decode($json, true);
-    $response->getBody()->write($data);
-    $view = Twig::fromRequest($request);
-    return $view->render($response, 'test.html');
-});

@@ -12,8 +12,6 @@ UNLOCK! is a series of escape room games published by Asmodee Digital. The games
 ### [Lucas FARRONI](https://github.com/lucasfarroni), 👨‍🦲 The Bald Master 👨‍🦲
 ### [Clément PERRIN](https://github.com/Alfiov), 😠 The Aigrito Master 😠
 
-[https://unlock.therealeureka.ninja](https://unlock.therealeureka.ninja)
-
 # Start App
 
 1. Install packages

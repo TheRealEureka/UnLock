@@ -4,10 +4,25 @@ let timer = "60:00";
 
 let timerElement = document.getElementById("timer");
 
-timerElement.innerText = timer;
 let interval;
 
-function startTimer() {
+function startTimer(time = '60:00') {
+    if(time !== "")
+    {
+         time  = time.split(":");
+        let minutes_temp =60 -  time[0];
+        let seconds_temp = 0 - time[1];
+        //calcule the diffrence between the current time and the time that the user entered
+        if(seconds_temp < 0)
+        {
+            seconds_temp = 60 + seconds_temp;
+            minutes_temp--;
+        }
+        time = minutes_temp + ":" + seconds_temp;
+        timer = time;
+    }
+
+    timerElement.innerText = timer;
     let timerArray = timer.split(":");
     let minutes = timerArray[0];
     let seconds = timerArray[1];
@@ -46,9 +61,10 @@ function startTimer() {
         timer = minutes + ":" + seconds;
         timerElement.innerText = timer;
     }, 1000);
+
+
 }
 
-startTimer();
 
 function stopTimer() {
     clearInterval(interval);
