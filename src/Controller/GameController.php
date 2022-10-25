@@ -27,12 +27,12 @@ class GameController
      */
     public function start(ServerRequestInterface $request, ResponseInterface $response, array $args) : ResponseInterface
     {
-        return $this->view->render($response, 'index.html');
+        return $this->view->render($response, 'index.twig');
     }
     public function win(ServerRequestInterface $request, ResponseInterface $response, array $args) : ResponseInterface
     {
         if ($_SESSION["currents_cars"] == null && array_search("60", $_SESSION["currents_cars"])) {
-            return $this->view->render($response, 'win.html');
+            return $this->view->render($response, 'win.twig');
         }
         $response = $response->withStatus(302);
         return $response->withHeader('Location', '/play');
