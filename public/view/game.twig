@@ -27,20 +27,16 @@
 
     <div class="wrapper">
 
+        {% for card in cards %}
+            <div><img src="../data/assets/cards/{{ card }}" alt="{{ card }}" class="grid-img"/></div>
 
-            <div class="one"><img src="../data/assets/cards/1_2.png" alt="" class="grid-img"/></div>
-            <div class="two"><img src="../data/assets/cards/1_3.png" alt="" class="grid-img"/></div>
-            <div class="three"><img src="../data/assets/cards/1_3.png" alt="" class="grid-img"/></div>
-            <div class="four"><img src="../data/assets/cards/1_3.png" alt="" class="grid-img-test"/></div>
-            <div class="five"><img src="../data/assets/cards/1_3.png" alt="" class="grid-img"/></div>
-            <div class="six"><img src="../data/assets/cards/1_3.png" alt="" class="grid-img"/></div>
-            <div class="seven"><img src="../data/assets/cards/1_3.png" alt="" class="grid-img"/></div>
+        {% endfor %}
+
             <div class="eigth"><label for="name">enter an action command:</label>
 
                 <input type="text" id="name" name="name" required
                        minlength="4" maxlength="8" size="10"></div>
     </div>
-
 
 </div>
 

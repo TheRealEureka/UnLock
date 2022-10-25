@@ -1,5 +1,10 @@
 <?php
+namespace Unlock;
+
 session_start();
+
+use DateTime;
+use DateTimeImmutable;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
@@ -53,23 +58,51 @@ $app->get(
         } else {
             $date = new DateTimeImmutable();
             $_SESSION['user_time'] = $date->getTimestamp();
+            $_SESSION["currents_cars"] = array("A", "9", "22", "H", "B", "6");
         }
 
+        $cards = array();
+        foreach ($_SESSION["currents_cars"] as $key => $value) {
+            if (Utils\CardResolver::exist($value)) {
+                $cards[$key] = Utils\CardResolver::getCard($value)["image"];
+            } else {
+                unset($_SESSION["currents_cars"][$key]);
+            }
+        }
 
         $view = Twig::fromRequest($rq);
         return $view->render($rs, 'game.twig', [
-            'cards' => array("A", "2", "3", "4", "5", "6", "7"),
-            'timer_start' => $time
+            'cards' =>  $cards,
+            'timer_start' => $time,
+            'debug' => $_SESSION["currents_cars"]
         ]);
     }
-);
-$app->get(
-    '/test',
-    function (Request $rq, Response $rs): Response {
-        $view = Twig::fromRequest($rq);
-        return $view->render($rs, 'test.html');
+)
+;
+$app->get('/play/display/{id}', function (Request $rq, Response $rs, array $args): Response {
+    $id = strtoupper($args['id']);
+    if (isset($_SESSION["currents_cars"])) {
+        if (!in_array($id, $_SESSION["currents_cars"]) && Utils\CardResolver::exist($id)) {
+            $_SESSION["currents_cars"][] = $id;
+        }
     }
-);
+
+    $rs = $rs->withStatus(302);
+    return $rs->withHeader('Location', '/play');
+});
+
+$app->get('/play/hide/{id}', function (Request $rq, Response $rs, array $args): Response {
+    $id = strtoupper($args['id']);
+    if (isset($_SESSION["currents_cars"])) {
+        if (in_array($id, $_SESSION["currents_cars"])) {
+            unset($_SESSION["currents_cars"][array_search($id, $_SESSION["currents_cars"])]);
+        }
+    }
+
+    $rs = $rs->withStatus(302);
+    return $rs->withHeader('Location', '/play');
+});
+
 $app->get(
     '/',
     function (Request $rq, Response $rs): Response {

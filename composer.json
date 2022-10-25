@@ -12,6 +12,7 @@
     "autoload": {
         "psr-4": {
             "Unlock\\": "./public",
+            "Unlock\\Utils\\": "./public/utils",
             "Unlock\\Domain\\": "./src/Domain"
         }
     }
