@@ -31,7 +31,7 @@ class CardController
     public function show(ServerRequestInterface $request, ResponseInterface $response, array $args) : ResponseInterface
     {
         $time = "";
-
+        $back = $this->cardService->getBack();
         if (isset($_SESSION['user_time'])) {
             $time = date_diff(new DateTime(), new DateTime(date('m/d/Y H:i:s', $_SESSION['user_time'])))->format('%i:%s');
         } else {
@@ -54,6 +54,7 @@ class CardController
         }
         return $this->view->render($response, 'game.twig', [
              'cards' =>  $cards,
+             'cards_back' => $back,
              'timer_start' => $time
          ]);
     }

@@ -42,8 +42,14 @@ final class CardService
         $this->logger->info("CardService::getUses($id)" . $req[0]->getRequire());
         return $req[0]->getRequire() == null ? null : json_decode($req[0]->getRequire(), true);
     }
-    public function log($string)
+    public function getBack(): array
     {
-        $this->logger->info($string);
+        $qb = $this->em->getRepository(\App\Domain\Card::class)->createQueryBuilder('c');
+        $req=$qb->select("c.image_back")
+            ->where($qb->expr()->isNotNull("c.image_back"))
+           ->getQuery()->getResult();
+        $this->logger->info("CardService::getBack()".print_r($req,true));
+        return $req;
+
     }
 }

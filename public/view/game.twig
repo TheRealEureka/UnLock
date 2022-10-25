@@ -21,7 +21,7 @@
         <button class="button" id="calc">Calculatrice</button>
         <!--<button class="button" id="settings">Parametres</button>-->
     </div>
-    <div class="numpadspace"></div>
+    <div class="numpadspace" id="card_popup"></div>
     <img class="logo" src="../data/assets/UNLOCK.webp" alt="logo">
 </div>
 <div class="gameSpace">
@@ -49,6 +49,14 @@
 
 
     </div>
+</div>
+
+<div class="popup hidden" id="popup">
+    <div class="popup-content">
+        <p id="close_popup" class="close">X</p>
+        {% for card in cards_back %}
+            <img src="../data/assets/cards/{{ card.image_back }}" alt="{{ card.image_back }}" class="carte carte_small"/>
+        {% endfor %}
 </div>
 
 <script src="../data/js/timer.js"></script>
