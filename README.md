@@ -2,7 +2,8 @@
 ---
 # UNLOCK! - The Escape Game
 
-[UNLOCK!](https://www.spacecowboys.fr/unlock) is a series of escape room games published by Asmodee Digital. The games are available on iOS, Android, and Steam. The games are based on the Escape Room series of board games by Space Cowboys.
+
+[UNLOCK!](https://www.spacecowboys.fr/unlock) is a series of escape room games published by Asmodee Digital. The games are available on iOS, Android, and Steam. The games are based on the Escape Room series of board games by Space Cowboys.  
 
 ## This is a school project made by:
 
