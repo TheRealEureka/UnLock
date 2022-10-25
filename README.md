@@ -45,7 +45,16 @@ docker-compose up --build
 ```
  create database `unlock`;
 ```
-4. Finaly, import init.sql into the database
+4. Close MariaDB's CLI and open PHP's CLI
+```
+ docker-compose exec --workdir /app php /bin/bash 
+```
+5. Generate the tables
+```
+php vendor/bin/doctrine orm:schema-tool:create
+```
+6. Finaly, import init.sql into the database
+
 # Having troubles ?
 
 ```
