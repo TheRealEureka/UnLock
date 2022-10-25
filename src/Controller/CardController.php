@@ -58,11 +58,29 @@ class CardController
     public function addCard(ServerRequestInterface $request, ResponseInterface $response, array $args) : ResponseInterface
     {
         $id = strtoupper($request->getParsedBody()['id']);
-        if (isset($_SESSION["currents_cars"])) {
+        if (strlen($id) >3) {
+            $to_add = "";
+            switch ($id) {
+                case '1247':
+                    $to_add = "91";
+                    break;
+                case '4233':
+                    $to_add = "60";
+                    break;
+                case '6815':
+                    $response = $response->withStatus(302);
+                    return $response->withHeader('Location', '/win');
+                    break;
+            }
+            if ($to_add != "") {
+                $this->add($to_add);
+            }
+        } elseif (isset($_SESSION["currents_cars"])) {
             if (!in_array($id, $_SESSION["currents_cars"]) && $this->cardService->exist($id)) {
-                $_SESSION["currents_cars"][] = $id;
+                $this->add($id);
             }
         }
+
 
         $response = $response->withStatus(302);
         return $response->withHeader('Location', '/play');
@@ -71,13 +89,46 @@ class CardController
     public function hideCard(ServerRequestInterface $request, ResponseInterface $response, array $args) : ResponseInterface
     {
         $id = strtoupper($request->getParsedBody()['id']);
-        if (isset($_SESSION["currents_cars"])) {
-            if (in_array($id, $_SESSION["currents_cars"])) {
-                unset($_SESSION["currents_cars"][$id]);
-            }
-        }
+        $this->splice($id);
 
         $response = $response->withStatus(302);
         return $response->withHeader('Location', '/play');
+    }
+
+    private function splice($id) : void
+    {
+        if (isset($_SESSION["currents_cars"])) {
+            if (in_array($id, $_SESSION["currents_cars"])) {
+                $index = array_search($id, $_SESSION["currents_cars"]);
+                if ($index) {
+                    unset($_SESSION["currents_cars"][$index]);
+                }
+            }
+        }
+    }
+    private function add($id) : void
+    {
+        if ($this->checkRequirments($id)) {
+            $_SESSION["currents_cars"][] = $id;
+            $uses = $this->cardService->getUses($id);
+            if ($uses !== null) {
+                foreach ($uses as $use) {
+                    $this->splice($use);
+                }
+            }
+        }
+    }
+    private function checkRequirments($id): bool
+    {
+        $req = $this->cardService->getRequire($id);
+        if ($req !== null) {
+            foreach ($req as $r) {
+                if (!in_array($r, $_SESSION["currents_cars"])) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
     }
 }

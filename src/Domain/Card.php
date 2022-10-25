@@ -28,6 +28,9 @@ final class Card
     #[Column(name: 'use', type: 'string', unique: false, nullable: true)]
     private string $use;
 
+    #[Column(name: 'require', type: 'string', unique: false, nullable: true)]
+    private string $require;
+
 
 
     public function __construct(int $numCarte, int $type, string $image, string $use, string $imgae_back=null)
@@ -66,5 +69,9 @@ final class Card
     public function getUse(): string
     {
         return $this->use;
+    }
+    public function getRequire(): string
+    {
+        return $this->require;
     }
 }

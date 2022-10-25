@@ -1,4 +1,7 @@
 <?php
+
+use App\Controller\GameController;
+use App\Service\GameService;
 use Doctrine\Common\Cache\Psr6\DoctrineProvider;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
@@ -58,6 +61,15 @@ $container->set(CardService::class, static function (Container $c) {
 $container->set(CardController::class, static function (ContainerInterface $container) {
     $view = $container->get('view');
     return new CardController($view, $container->get(CardService::class));
+});
+
+$container->set(GameService::class, static function (Container $c) {
+    return new GameService($c->get(EntityManager::class), $c->get(LoggerInterface::class));
+});
+
+$container->set(gameController::class, static function (ContainerInterface $container) {
+    $view = $container->get('view');
+    return new GameService($view, $container->get(GameService::class));
 });
 
 return $container;
