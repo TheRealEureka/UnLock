@@ -94,7 +94,7 @@ body {
     background-image: url("../assets/bgGame.jpg");
     background-size: cover;
     display:flex;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 #progressbar {
