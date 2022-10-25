@@ -13,7 +13,9 @@
 ### [Clément PERRIN](https://github.com/Alfiov), 😠 The Aigrito Master 😠
 
 
-# Start App
+# Setup App
+
+## Web server 
 
 1. Install packages
 
@@ -29,6 +31,21 @@ docker-compose up --build
 
 3. Go to [http://localhost:8080](http://localhost:8080)
 
+## Database
+
+1. Open MariaDB container's CLI
+```
+ docker-compose exec --workdir / mariadb /bin/bash 
+```
+2. Connect to MariaDB (root/root)
+```
+ mysql -u root -p 
+```
+3. Create database
+```
+ create database unlock;
+```
+4. Finaly, import init.sql into the database
 # Having troubles ?
 
 ```
