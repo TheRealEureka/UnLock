@@ -28,9 +28,11 @@ final class User
         $this->password = password_hash($password, PASSWORD_DEFAULT);
 
     }
-
+    public function getId() : int{
+        return $this->id;
+    }
     public function getUsername() : string{
-        return $this->getUsername();
+        return $this->username;
     }
 
     public function checkPassword($pass) : bool {

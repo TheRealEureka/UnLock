@@ -18,7 +18,11 @@
     </a>
 </div>
 {% if conn == false %}
-<div class="forms">
+    {% if error != "" %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <div class="forms">
     <form class="login" method="post" action="/login">
         <label for="username">Nom d'utilisateur :
         <input type="text" name="username" /></label>
@@ -32,8 +36,8 @@
         <input type="text" name="username" /></label>
         <label for="password">Mot de passe :
         <input type="password" name="password" /></label>
-        <label for="password_comfirm">Répétez le mot de passe :
-        <input type="password" name="password_comfirm" /></label>
+        <label for="password_confirm">Répétez le mot de passe :
+        <input type="password" name="password_confirm" /></label>
         <input type="submit" value="S'inscrire" />
     </form>
 </div>
