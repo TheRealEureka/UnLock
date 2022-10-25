@@ -11,6 +11,10 @@ function startTimer(time = '60:00') {
     if(time !== "" && time !== '60:00')
     {
          time  = time.split(":");
+         if(time[0]<=60 && time[1] >=0 && time[0]>0 && time[1] <= 60)
+         {
+
+
         let minutes_temp =60 -  time[0];
         let seconds_temp = 0 - time[1];
         //calcule the diffrence between the current time and the time that the user entered
@@ -22,6 +26,10 @@ function startTimer(time = '60:00') {
         time = minutes_temp + ":" + seconds_temp;
         timer = time;
     }
+         else{
+             timer = "00:00";
+         }
+    }
 
     timerElement.innerText = timer;
     let timerArray = timer.split(":");
@@ -29,37 +37,49 @@ function startTimer(time = '60:00') {
     let seconds = timerArray[1];
 
     interval = setInterval(function () {
+       if(timer !== "00:00") {
+           seconds--;
+           if (seconds < 0) {
+               minutes--;
+               seconds = 59;
+               if (minutes < 10) {
+                   minutes = "0" + minutes;
+               }
+           }
 
-        seconds--;
-        if (seconds < 0) {
-            minutes--;
-            seconds = 59;
-            if (minutes < 10 ) {
-                minutes = "0" + minutes;
-            }
-        }
+           if (seconds < 10) {
 
-        if (seconds < 10) {
+               seconds = "0" + seconds;
+           }
 
-            seconds = "0" + seconds;
-        }
+           if (minutes <= 0 && seconds <= 0) {
+               seconds = "00";
+               minutes = "00";
+               timer = minutes + ":" + seconds;
+               timerElement.innerText = timer;
+               clearInterval(interval);
+               window.location = "/timeout";
 
-        if (minutes === "00" && seconds === "00") {
-            seconds = "00";
-            timer = minutes + ":" + seconds;
-            timerElement.innerText = timer;
-            clearInterval(interval);
-            return;
-        }
+               return;
+           }
 
 
+           if (minutes <= 4) {
+               timerElement.style.color = "red";
+               timerElement.style.textShadow = "2px 0 0 black";
+               document.getElementById("progress").style.backgroundColor = "red";
+           }
+       }
+       else{
+           seconds = "00";
+           minutes = "00";
+           timer = minutes + ":" + seconds;
+           timerElement.innerText = timer;
+           clearInterval(interval);
+           window.location = "/timeout";
 
-        if (minutes <= 4) {
-            timerElement.style.color = "red";
-            timerElement.style.textShadow = "2px 0 0 black";
-            document.getElementById("progress").style.backgroundColor = "red";
-        }
-
+           return;
+       }
         timer = minutes + ":" + seconds;
         elem.style.width = ((60-minutes) * 1.66) + "%";
 

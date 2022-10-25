@@ -52,6 +52,7 @@ class CardController
                 unset($_SESSION["currents_cards"][$key]);
             }
         }
+
         return $this->view->render($response, 'game.twig', [
              'cards' =>  $cards,
              'cards_back' => $back,

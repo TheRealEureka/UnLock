@@ -43,6 +43,12 @@ $app->get('/reset', function (Request $rq, Response $rs): Response {
     $rs = $rs->withStatus(302);
     return $rs->withHeader('Location', '/play');
 });
+$app->get('/timeout', function (Request $rq, Response $rs): Response {
+
+    $_SESSION['endgame'] = true;
+    $rs = $rs->withStatus(302);
+    return $rs->withHeader('Location', '/');
+});
 
 try {
     $app->run();
