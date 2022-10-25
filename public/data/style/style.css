@@ -5,6 +5,8 @@ html,
 body {
     height: 100%;
     overflow: hidden;
+    display: flex;
+    flex-direction: row;
 }
 
 .sidebar {
@@ -12,7 +14,7 @@ body {
     flex-direction: column;
     border-right: #ffac11 3px solid;
     height: 100%;
-    width: 15%;
+    width: 200px;
     position: absolute;
     top: 0;
     left: 0;
@@ -61,6 +63,9 @@ body {
 }
 
 .numpadspace {
+    background: url("../assets/cards/6_back.png") no-repeat;
+    background-size: contain;
+    cursor : pointer;
     align-content: center;
     width: 80%;
     height: 300px;
@@ -68,7 +73,6 @@ body {
     margin-top: 10px;
     margin-bottom: 5px;
     border-radius: 10px;
-    background: antiquewhite;
     border: darkgrey 1px solid;
 }
 
@@ -84,8 +88,7 @@ body {
 
 .gameSpace {
     height: 100%;
-    width: 85%;
-    position: absolute;
+    margin-left: 200px;
     top: 0;
     left: calc(15% + 3px);
     background-image: url("../assets/bgGame.jpg");
@@ -115,6 +118,8 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
     justify-content: center;
 }
 
