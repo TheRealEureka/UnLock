@@ -27,18 +27,14 @@ $app->add(TwigMiddleware::createFromContainer($app));
 error_reporting(E_ALL ^ E_DEPRECATED);
 
 
-$app->get(
-    '/',
-    function (Request $rq, Response $rs): Response {
-        $view = Twig::fromRequest($rq);
-        return $view->render($rs, 'index.html');
-    }
-);
+
+$app->get('/', \App\Controller\GameController::class . ':start');
 
 
 $app->get('/play', \App\Controller\CardController::class . ':show');
 $app->post('/display', \App\Controller\CardController::class . ':addCard');
 $app->post('/hide', \App\Controller\CardController::class . ':hideCard');
+
 
 
 $app->get('/reset', function (Request $rq, Response $rs): Response {

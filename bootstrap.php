@@ -69,7 +69,7 @@ $container->set(GameService::class, static function (Container $c) {
 
 $container->set(gameController::class, static function (ContainerInterface $container) {
     $view = $container->get('view');
-    return new GameService($view, $container->get(GameService::class));
+    return new gameController($view, $container->get(GameService::class));
 });
 
 return $container;

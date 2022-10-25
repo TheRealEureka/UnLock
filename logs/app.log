@@ -191,3 +191,6 @@
 [2022-10-25T13:27:42.105298+00:00] app.INFO: CardService::getUses(66)["91"] [] []
 [2022-10-25T13:27:42.624380+00:00] app.INFO: CardService::get(P1) [] []
 [2022-10-25T13:27:42.634528+00:00] app.INFO: CardService::get(8) [] []
+[2022-10-25T13:34:59.877614+00:00] app.INFO: CardService::get(P1) [] []
+[2022-10-25T13:34:59.889413+00:00] app.INFO: CardService::get(8) [] []
+[2022-10-25T13:35:04.463703+00:00] app.INFO: CardService::get(P1) [] []
