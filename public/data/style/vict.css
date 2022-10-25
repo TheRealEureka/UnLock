@@ -1,0 +1,62 @@
+@import url("https://fonts.google.com/specimen/Fira+Sans?utm_source=bdmtools&utm_medium=siteweb&utm_campaign=google-fonts");
+
+body {
+    background-image: url("../assets/bgMenu.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #FFFFFF;
+    text-shadow: 0 0 5px #000000;
+    font-family: "Fira Code", system-ui;
+    margin: 0;
+    padding: 0;
+}
+
+#text {
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    font-size: 60px;
+
+}
+
+#winner {
+    margin-top: -40px;
+    font-size: 130px;
+    font-weight: bolder;
+}
+
+#congrats {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+#congrats img {
+    height: 100px;
+
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -100000;
+}
+
+#thanks {
+    position: absolute;
+    bottom: 0;
+    left: 35%;
+    background-color: rgba(145, 145, 145, 0.4);
+}
+
+#thanks a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
