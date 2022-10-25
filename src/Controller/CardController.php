@@ -37,16 +37,19 @@ class CardController
         } else {
             $date = new DateTimeImmutable();
             $_SESSION['user_time'] = $date->getTimestamp();
-            $_SESSION["currents_cars"] = array("P1");
+            $_SESSION["currents_cards"] = ["P1","15","24","55","H","6","R"];
+        }
+        if (!isset($_SESSION['currents_cards'])) {
+            $_SESSION["currents_cards"] = ["P1","15","24","55","H","6","R"];
         }
 
         $cards = array();
-        foreach ($_SESSION["currents_cars"] as $key => $value) {
+        foreach ($_SESSION["currents_cards"] as $key => $value) {
             $card = $this->cardService->get($value);
             if ($card != null && isset($card[0])) {
                 $cards[$key] = $card[0]->getImage();
             } else {
-                unset($_SESSION["currents_cars"][$key]);
+                unset($_SESSION["currents_cards"][$key]);
             }
         }
         return $this->view->render($response, 'game.twig', [
@@ -70,13 +73,12 @@ class CardController
                 case '6815':
                     $response = $response->withStatus(302);
                     return $response->withHeader('Location', '/win');
-                    break;
             }
             if ($to_add != "") {
                 $this->add($to_add);
             }
-        } elseif (isset($_SESSION["currents_cars"])) {
-            if (!in_array($id, $_SESSION["currents_cars"]) && $this->cardService->exist($id)) {
+        } elseif (isset($_SESSION["currents_cards"])) {
+            if (!in_array($id, $_SESSION["currents_cards"]) && $this->cardService->exist($id)) {
                 $this->add($id);
             }
         }
@@ -97,11 +99,11 @@ class CardController
 
     private function splice($id) : void
     {
-        if (isset($_SESSION["currents_cars"])) {
-            if (in_array($id, $_SESSION["currents_cars"])) {
-                $index = array_search($id, $_SESSION["currents_cars"]);
+        if (isset($_SESSION["currents_cards"])) {
+            if (in_array($id, $_SESSION["currents_cards"])) {
+                $index = array_search($id, $_SESSION["currents_cards"]);
                 if ($index) {
-                    unset($_SESSION["currents_cars"][$index]);
+                    unset($_SESSION["currents_cards"][$index]);
                 }
             }
         }
@@ -109,7 +111,7 @@ class CardController
     private function add($id) : void
     {
         if ($this->checkRequirments($id)) {
-            $_SESSION["currents_cars"][] = $id;
+            $_SESSION["currents_cards"][] = $id;
             $uses = $this->cardService->getUses($id);
             if ($uses !== null) {
                 foreach ($uses as $use) {
@@ -123,7 +125,7 @@ class CardController
         $req = $this->cardService->getRequire($id);
         if ($req !== null) {
             foreach ($req as $r) {
-                if (!in_array($r, $_SESSION["currents_cars"])) {
+                if (!in_array($r, $_SESSION["currents_cards"])) {
                     return false;
                 }
             }

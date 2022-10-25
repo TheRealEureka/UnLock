@@ -29,10 +29,18 @@ class GameController
     {
         return $this->view->render($response, 'index.twig');
     }
+
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     */
     public function win(ServerRequestInterface $request, ResponseInterface $response, array $args) : ResponseInterface
     {
-        if ($_SESSION["currents_cars"] == null && array_search("60", $_SESSION["currents_cars"])) {
-            return $this->view->render($response, 'win.twig');
+        if (!$_SESSION["currents_cards"] == null) {
+            if (array_search("60", $_SESSION["currents_cards"])) {
+                return $this->view->render($response, 'win.twig');
+            }
         }
         $response = $response->withStatus(302);
         return $response->withHeader('Location', '/play');

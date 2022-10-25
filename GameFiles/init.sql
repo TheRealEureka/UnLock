@@ -17,7 +17,7 @@ INSERT INTO card (`numCarte`, `image`, `image_back`, `type`, `use`, `require`) V
 ('66', '66.png', '66_back.png', 'blue', '[]', '["91"]'),
 ('85', '85.png', '85_back.png', 'green', '[]', '["91"]'),
 ('88', '88.png', '88_back.png', 'grey', '[]', '[]'),
-('91', '91.png', null, 'piece', '[]', '["51","H","A","9"]'),
+('91', '91.png', null, 'piece', '["P1","55","H","A","9","R","A","20"]', '["55","H","A","9","20"]'),
 ('P1', 'p1.png', null, 'piece', '[]', '[]'),
 ('A', 'A.png', 'A_back.png', 'grey', '["8"]', '["8"]'),
 ('INTRO', 'intro.png', null, 'intro', '[]', '[]'),
