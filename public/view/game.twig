@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>UNLOCK!</title>
+    <link rel="stylesheet" href="../data/style/normalizer.css">
+    <link rel="stylesheet" href="../data/style/style.css">
+
+</head>
+<body>
+<div class="sidebar">
+    <p class="timer" id="timer"></p>
+    <div id="progressbar">
+        <div id="progress"></div>
+    </div>
+    <div class="boutons">
+        <button class="button" id="playpauseButton">Pause</button>
+        <button class="button" id="indice">Indice</button>
+        <button class="button" id="machine">Machine</button>
+        <button class="button" id="calc">Calculatrice</button>
+        <button class="button" id="settings">Parametres</button>
+    </div>
+    <div class="numpadspace"></div>
+    <img class="logo" src="../data/assets/UNLOCK.webp" alt="logo">
+</div>
+<div class="gameSpace">
+
+    <div class="wrapper">
+
+        {% for card in cards %}
+            <div><img src="../data/assets/cards/{{ card }}" alt="{{ card }}" class="grid-img"/></div>
+
+        {% endfor %}
+
+            <div class="eigth">
+                <form action="/display" method="post">
+                    <label for="id">enter an action command:</label>
+
+                <input type="text" id="id" name="id" required
+                       minlength="1" maxlength="8" size="10">
+                <input type="submit" value="Submit">
+        </form>
+            </div>
+    </div>
+{{ debug }}
+</div>
+
+<script src="../data/js/timer.js"></script>
+<script src="../data/js/pausePlayButton.js"></script>
+<script src="../data/js/progressbar.js"></script>
+
+<script>
+    startTimer("{{ timer_start }}");
+</script>
+</body>
+</html>

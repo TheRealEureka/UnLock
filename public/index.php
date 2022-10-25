@@ -1,75 +1,50 @@
 <?php
+namespace Unlock;
 
+session_start();
+
+use DateTime;
+use DateTimeImmutable;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
+use Throwable;
 
-//Auto load
 require __DIR__ . '/../vendor/autoload.php';
+
+$container = require_once __DIR__ . '/../bootstrap.php';
+
+AppFactory::setContainer($container);
 
 $app = AppFactory::create();
 
-$container = require __DIR__ . '/../bootstrap.php';
-AppFactory::setContainer($container);
+$app->add(TwigMiddleware::createFromContainer($app));
 
-
-try {
-    $twig = Twig::create('view/', ['cache' => false]);
-    $app->add(TwigMiddleware::create($app, $twig));
-} catch (Throwable $e) {
-    echo $e->getMessage();
-}
 
 
 error_reporting(E_ALL ^ E_DEPRECATED);
 
 
-$app->get(
-    '/twig/{id}',
-    function (Request $rq, Response $rs, array $args): Response {
-        $view = Twig::fromRequest($rq);
-        $id = $args['id'];
-        $chars = $id;
-        if (gettype($id) == 'string') {
-            $id = strlen($id);
-        }
-        return $view->render($rs, 'test.html', [
-            'id' => $id,
-            'chars' => $chars,
-            'users' => array("john", "alex", "jane", "joe")
-        ]);
-    }
-);
+
+$app->get('/', \App\Controller\GameController::class . ':start');
 
 
-$app->get(
-    '/play',
-    function (Request $rq, Response $rs): Response {
-        $view = Twig::fromRequest($rq);
-        return $view->render($rs, 'game.html');
-    }
-);
-$app->get(
-    '/',
-    function (Request $rq, Response $rs): Response {
-        $view = Twig::fromRequest($rq);
-        return $view->render($rs, 'index.html');
-    }
-);
+$app->get('/play', \App\Controller\CardController::class . ':show');
+$app->post('/display', \App\Controller\CardController::class . ':addCard');
+$app->post('/hide', \App\Controller\CardController::class . ':hideCard');
+
+
+
+$app->get('/reset', function (Request $rq, Response $rs): Response {
+    session_destroy();
+    $rs = $rs->withStatus(302);
+    return $rs->withHeader('Location', '/play');
+});
 
 try {
     $app->run();
 } catch (Throwable $e) {
     echo $e->getMessage();
 }
-
-
-$app->post('/test', function (Request $request, Response $response): Response {
-    $json = $request->getParsedBody();
-    $data = json_decode($json, true);
-    $response->getBody()->write($data);
-    $view = Twig::fromRequest($request);
-    return $view->render($response, 'test.html');
-});
