@@ -5,11 +5,11 @@ class CardResolver
 {
     private static array $cards =  [
    "6" => [
-    "image" => "6.png",
-    "image_back" => "6_back.png",
-    "links" => [
-    "9"
-    ]
+        "image" => "6.png",
+        "image_back" => "6_back.png",
+        "links" => [
+        "9"
+        ]
     ],
     "8" => [
     "image" => "8.png",
@@ -118,7 +118,7 @@ class CardResolver
     "links" => [
     ]
     ],
-    "p1" => [
+    "P1" => [
     "image" => "p1.png",
     "image_back" => null,
     "links" => [
