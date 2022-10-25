@@ -43,7 +43,7 @@ docker-compose up --build
 ```
 3. Create database
 ```
- create database unlock;
+ create database `unlock`;
 ```
 4. Finaly, import init.sql into the database
 # Having troubles ?
