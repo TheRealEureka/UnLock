@@ -8,7 +8,7 @@ let elem = document.getElementById("progress");
 let interval;
 
 function startTimer(time = '60:00') {
-    if(time !== "")
+    if(time !== "" && time !== '60:00')
     {
          time  = time.split(":");
         let minutes_temp =60 -  time[0];
