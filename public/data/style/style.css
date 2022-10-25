@@ -16,8 +16,9 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    background: rgb(255, 185, 18);
-    background: linear-gradient(164deg, rgb(255, 172, 17) 0%, rgba(255, 194, 80, 1) 35%, rgb(159, 78, 0) 100%);
+    background-image: url("../assets/bgMenu.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
     align-items: center;
 }
 
@@ -144,7 +145,10 @@ body {
 
 #principal{
 
-    background: #b68c56;
+    background-image: url("../assets/bgMenu.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
     border-radius: 10px;
     --border: darkgrey 1px solid;
     display: flex;
