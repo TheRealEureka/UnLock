@@ -28,26 +28,32 @@
     <div class="wrapper">
 
         {% for card in cards %}
-            <div><img src="../data/assets/cards/{{ card }}" alt="{{ card }}" class="grid-img"/></div>
-
+            {% if card == "6.png" %}
+                <div><img id="6" src="../data/assets/cards/{{ card }}" alt="{{ card }}" class="carte"/></div>
+                <script>
+                    let carte = document.getElementById("6");
+                    carte.addEventListener("click", function () {
+                        carte.classList.toggle("rotate");
+                    });
+                </script>
+            {% else %}
+                <div><img src="../data/assets/cards/{{ card }}" alt="{{ card }}" class="carte" /></div>
+            {% endif %}
         {% endfor %}
 
-            <div class="eigth">
-                <form action="/display" method="post">
-                    <label for="id">enter an action command:</label>
-
+                <form action="/display" method="post" id="searchBar">
+                    <label for="id">Enter a card number or code :</label>
                 <input type="text" id="id" name="id" required
                        minlength="1" maxlength="8" size="10">
                 <input type="submit" value="Submit">
         </form>
-            </div>
     </div>
-{{ debug }}
 </div>
 
 <script src="../data/js/timer.js"></script>
 <script src="../data/js/pausePlayButton.js"></script>
 <script src="../data/js/progressbar.js"></script>
+<script src="../data/js/interact.js"></script>
 
 <script>
     startTimer("{{ timer_start }}");
