@@ -1,5 +1,5 @@
 <?php
-namespace Unlock\Controller;
+namespace App\Controller;
 
 use DateTime;
 use DateTimeImmutable;
@@ -9,7 +9,7 @@ use Slim\Views\Twig;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
-use Unlock\Service\CardService;
+use App\Service\CardService;
 
 class CardController
 {
@@ -30,7 +30,7 @@ class CardController
      */
     public function show(ServerRequestInterface $request, ResponseInterface $response, array $args) : ResponseInterface
     {
-        $time = "60:00";
+        $time = "";
 
         if (isset($_SESSION['user_time'])) {
             $time = date_diff(new DateTime(), new DateTime(date('m/d/Y H:i:s', $_SESSION['user_time'])))->format('%i:%s');
@@ -42,8 +42,10 @@ class CardController
 
         $cards = array();
         foreach ($_SESSION["currents_cars"] as $key => $value) {
-            if (\Unlock\Utils\CardResolver::exist($value)) {
-                $cards[$key] = \Unlock\Utils\CardResolver::getCard($value)["image"];
+            $card = $this->cardService->get($value);
+            if ($card != null && isset($card[0])) {
+
+                $cards[$key] = $card[0]->getImage();
             } else {
                 unset($_SESSION["currents_cars"][$key]);
             }

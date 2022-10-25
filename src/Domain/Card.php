@@ -1,5 +1,5 @@
 <?php /** @noinspection PhpPropertyOnlyWrittenInspection */
-namespace Unlock\Domain;
+namespace App\Domain;
 
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;

@@ -13,9 +13,9 @@
         "psr-4": {
             "Unlock\\": "./public",
             "Unlock\\Utils\\": "./public/utils",
-            "Unlock\\Domain\\": "./src/Domain",
-            "Unlock\\Controller\\": "./src/Controller",
-            "Unlock\\Service\\": "./src/Service"
+            "App\\Domain\\": "./src/Domain",
+            "App\\Controller\\": "./src/Controller",
+            "App\\Service\\": "./src/Service"
         }
     }
 }

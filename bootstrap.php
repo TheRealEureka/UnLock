@@ -11,8 +11,8 @@ use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Psr\Log\LoggerInterface;
 use Slim\Views\Twig;
-use Unlock\Controller\CardController;
-use Unlock\Service\CardService;
+use App\Controller\CardController;
+use App\Service\CardService;
 
 require_once __DIR__ . '/vendor/autoload.php';
 

@@ -11,7 +11,6 @@ use Slim\Factory\AppFactory;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 use Throwable;
-use Unlock\Controller\CardController;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -37,7 +36,7 @@ $app->get(
 );
 
 
-$app->get('/play', CardController::class . " :show");
+$app->get('/play', \App\Controller\CardController::class . ':show');
 
 $app->post('/display', function (Request $rq, Response $rs): Response {
     $id = strtoupper($rq->getParsedBody()['id']);
@@ -63,6 +62,11 @@ $app->post('/hide', function (Request $rq, Response $rs): Response {
     return $rs->withHeader('Location', '/play');
 });
 
+$app->get('/reset', function (Request $rq, Response $rs): Response {
+    session_destroy();
+    $rs = $rs->withStatus(302);
+    return $rs->withHeader('Location', '/play');
+});
 
 try {
     $app->run();
