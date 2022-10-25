@@ -14,7 +14,7 @@ body {
     flex-direction: column;
     border-right: #ffac11 3px solid;
     height: 100%;
-    width: 200px;
+    width: 210px;
     position: absolute;
     top: 0;
     left: 0;
@@ -88,7 +88,7 @@ body {
 
 .gameSpace {
     height: 100%;
-    margin-left: 200px;
+    margin-left: 210px;
     top: 0;
     left: calc(15% + 3px);
     background-image: url("../assets/bgGame.jpg");
