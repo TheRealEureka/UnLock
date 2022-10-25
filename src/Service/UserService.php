@@ -42,7 +42,7 @@ class UserService
      */
     public function signup(string $username, string $password, string $password_confirm): bool|int
     {
-        if(strlen($username)>2 && ($password == $password_confirm)){
+        if(strlen($username)>2 && ($password == $password_confirm) && strlen($password)>3){
             $newUser = new \App\Domain\User($username, $password);
             $this->em->persist($newUser);
             $this->em->flush();

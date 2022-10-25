@@ -17,10 +17,11 @@
         <button id="github"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="logo_github"> Notre repo Github</button>
     </a>
 </div>
+{% if error != "" %}
+    <div class="error">{{ error }}</div>
+{% endif %}
 {% if conn == false %}
-    {% if error != "" %}
-        <div class="error">{{ error }}</div>
-    {% endif %}
+
 
     <div class="forms">
     <form class="login" method="post" action="/login">

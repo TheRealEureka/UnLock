@@ -59,7 +59,7 @@ class UserController
             $signup = $this->userService->signup($args["username"], $args["password"], $args["password_confirm"]);
             if($signup === false){
                 if($args["password"] != $args["password_confirm"]) {
-                    $error = "Les mots de passe ne correspondent pas";
+                    $error = "Les mots de passe ne correspondent pas / Ne sont pas assez longs";
                 }else{
                     $error = "Le nom d'utilisateur est déjà utilisé";
                 }
@@ -68,6 +68,9 @@ class UserController
                 $_SESSION["username"] = $args["username"];
                 $error = "Inscription réussie";
             }
+        }
+        else{
+            $error = "Veuillez remplir tous les champs";
         }
         return $this->view->render($response, 'index.twig',[
             'conn' => isset($_SESSION['user_id']),
