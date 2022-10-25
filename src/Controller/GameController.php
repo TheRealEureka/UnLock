@@ -39,7 +39,7 @@ class GameController
     {
         if (!$_SESSION["currents_cards"] == null) {
             if (array_search("60", $_SESSION["currents_cards"])) {
-                return $this->view->render($response, 'win.twig');
+                return $this->view->render($response, 'victory.html');
             }
         }
         $response = $response->withStatus(302);
