@@ -63,7 +63,7 @@ body {
 }
 
 .numpadspace {
-    background: url("../assets/cards/6_back.png") no-repeat;
+    background: url("../assets/cards/tas.png") no-repeat;
     background-size: contain;
     cursor : pointer;
     align-content: center;
@@ -73,7 +73,7 @@ body {
     margin-top: 10px;
     margin-bottom: 5px;
     border-radius: 10px;
-    border: darkgrey 1px solid;
+    border: #848383 1px solid;
 }
 
 .logo {
