@@ -37,12 +37,18 @@ class CardController
         } else {
             $date = new DateTimeImmutable();
             $_SESSION['user_time'] = $date->getTimestamp();
+            $_SESSION['user_penality'] = 0;
             $_SESSION["currents_cards"] = ["P1","15","24","55","H","6","R"];
         }
         if (!isset($_SESSION['currents_cards'])) {
             $_SESSION["currents_cards"] = ["P1","15","24","55","H","6","R"];
         }
+        if ($_SESSION['user_penality'] !== 0) {
 
+            $times =  explode(":", $time);
+            $times[0] += $_SESSION['user_penality'];
+            $time = $times[0] . ":" . $times[1];
+        }
         $cards = array();
         foreach ($_SESSION["currents_cards"] as $key => $value) {
             $card = $this->cardService->get($value);
@@ -57,7 +63,7 @@ class CardController
              'cards' =>  $cards,
              'cards_back' => $back,
              'timer_start' => $time,
-            'disable' => isset($_SESSION["user_id"]) ? "disabled" : ""
+            'disable' => isset($_SESSION["user_id"]) ? "" : "disabled"
          ]);
     }
 
@@ -82,6 +88,10 @@ class CardController
             }
         } elseif (isset($_SESSION["currents_cards"])) {
             if (!in_array($id, $_SESSION["currents_cards"]) && $this->cardService->exist($id)) {
+                $type = $this->cardService->getType($id);
+                if ($type =="trap") {
+                    $_SESSION["user_penality"] += 10;
+                }
                 $this->add($id);
             }
         }

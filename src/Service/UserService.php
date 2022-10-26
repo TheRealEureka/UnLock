@@ -25,11 +25,11 @@ class UserService
         if ($req == null) {
             $this->logger->info("UserService::get($username) : user not found");
             return false;
-        }else{
-            if($req[0]->checkPassword($password)){
+        } else {
+            if ($req[0]->checkPassword($password)) {
                 $this->logger->info("UserService::get($username) : user found");
                 return $req[0]->getId();
-            }else{
+            } else {
                 $this->logger->info("UserService::get($username) : wrong password");
                 return false;
             }
@@ -42,18 +42,15 @@ class UserService
      */
     public function signup(string $username, string $password, string $password_confirm): bool|int
     {
-        if(strlen($username)>2 && ($password == $password_confirm) && strlen($password)>3){
+        if (strlen($username)>2 && ($password == $password_confirm) && strlen($password)>3) {
             $newUser = new \App\Domain\User($username, $password);
             $this->em->persist($newUser);
             $this->em->flush();
             $this->logger->info("UserService::signup($username)");
             return $newUser->getId();
-        }
-        else{
+        } else {
             $this->logger->info("UserService::signup($username) : error");
             return false;
         }
-
     }
-
 }

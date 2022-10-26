@@ -10,68 +10,98 @@ use Doctrine\ORM\Mapping\Table;
 #[Entity, Table(name: 'game')]
 final class Game
 {
+
     #[Id, Column(name: 'id', type: 'integer'), GeneratedValue(strategy: 'AUTO')]
     private int $id;
 
-    #[Column(name: 'numCarte', type: 'string', unique: true, nullable: false)]
-    private string $numCarte;
+    #[Column(name: 'id_user', type: 'integer', unique: true, nullable: false)]
+    private int $id_user;
 
-    #[Column(name: 'image', type: 'string', unique: true, nullable: false)]
-    private string $image;
+    #[Column(name: 'currents_cards', type: 'string', unique: false, nullable: false)]
+    private string $currents_cards;
 
-    #[Column(name: 'image_back', type: 'string', unique: true, nullable: true)]
-    private string $image_back;
+    #[Column(name: 'user_penality', type: 'string', unique: false, nullable: false)]
+    private string $user_penality;
 
-    #[Column(name: 'type', type: 'string', unique: false, nullable: true)]
-    private string $type;
-
-    #[Column(name: 'use', type: 'string', unique: false, nullable: true)]
-    private string $use;
-
-    #[Column(name: 'require', type: 'string', unique: false, nullable: true)]
-    private string $require;
+    #[Column(name: 'user_time', type: 'string', unique: false, nullable: false)]
+    private string $user_time;
 
 
 
-    public function __construct(int $numCarte, int $type, string $image, string $use, string $imgae_back=null)
+    public function __construct(string $id_user, string $currents_cards, string $user_penality, string $user_time)
     {
-        $this->numCarte = $numCarte;
-        $this->type = $type;
-        $this->image = $image;
-        $this->image_back = $imgae_back;
-        $this->use = $use;
+        $this->id_user = $id_user;
+        $this->currents_cards = $currents_cards;
+        $this->user_penality = $user_penality;
+        $this->user_time = $user_time;
     }
 
-
+    /**
+     * @return int
+     */
     public function getId(): int
     {
         return $this->id;
     }
 
-    public function getNumCarte(): int
+    /**
+     * @return int
+     */
+    public function getIdUser(): int
     {
-        return $this->numCarte;
+        return $this->id_user;
     }
 
-    public function getType(): string
+    /**
+     * @return string
+     */
+    public function getCurrentsCards(): string
     {
-        return $this->type;
+        return $this->currents_cards;
     }
 
-    public function getImage(): string
+    /**
+     * @return string
+     */
+    public function getUserPenality(): string
     {
-        return $this->image;
+        return $this->user_penality;
     }
-    public function getImageBack(): string
+
+    /**
+     * @return string
+     */
+    public function getUserTime(): string
     {
-        return $this->image_back;
+        return $this->user_time;
     }
-    public function getUse(): string
+
+    /**
+     * @param string $currents_cards
+     */
+    public function setCurrentsCards(string $currents_cards): void
     {
-        return $this->use;
+        $this->currents_cards = $currents_cards;
     }
-    public function getRequire(): string
+
+    /**
+     * @param string $user_penality
+     */
+    public function setUserPenality(string $user_penality): void
     {
-        return $this->require;
+        $this->user_penality = $user_penality;
     }
+
+    /**
+     * @param string $user_time
+     */
+    public function setUserTime(string $user_time): void
+    {
+        $this->user_time = $user_time;
+    }
+
+
+
+
+
 }

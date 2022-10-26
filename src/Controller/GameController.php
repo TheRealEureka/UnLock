@@ -60,4 +60,15 @@ class GameController
     {
         return $this->view->render($response, 'defeat.html');
     }
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     */
+    public function save(ServerRequestInterface $request, ResponseInterface $response, array $args) : ResponseInterface
+    {
+        $this->gameService->save();
+        $response = $response->withStatus(302);
+        return $response->withHeader('Location', '/play');
+    }
 }

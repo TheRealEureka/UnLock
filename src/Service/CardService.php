@@ -52,4 +52,11 @@ final class CardService
 
         return $req;
     }
+    public function getType($id): string|null
+    {
+        $req = $this->em->getRepository(\App\Domain\Card::class)->findBy(['numCarte' => $id]);
+        $this->logger->info("CardService::getUses($id)" . $req[0]->getUse());
+        return $req[0]->getType() == null ? null : $req[0]->getType();
+
+    }
 }
