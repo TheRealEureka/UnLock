@@ -19,9 +19,10 @@ final class GameService
         $this->em = $em;
         $this->logger = $logger;
     }
+
     public function getByUser(string $id): Game|null
     {
-        $req = $this->em->getRepository(\App\Domain\Game::class)->findBy(['id_user' => $id]);
+        $req = $this->em->getRepository(Game::class)->findBy(['id_user' => $id]);
         $this->logger->info("GameService::get($id)");
         return $req == null ? null : $req[0];
     }
@@ -35,6 +36,7 @@ final class GameService
         if (isset($_SESSION["user_id"]) && isset($_SESSION["currents_cards"]) && isset($_SESSION["user_time"]) && isset($_SESSION["user_penality"])) {
             $game = $this->getByUser($_SESSION["user_id"]);
             $played = explode(":", date_diff(new DateTime(), new DateTime(date('m/d/Y H:i:s', $_SESSION['user_time'])))->format('%i:%s'));
+
             $played = array(
                 "minutes" => $played[0],
                 "second" => $played[1],
@@ -49,7 +51,7 @@ final class GameService
                 $time['second'] = 60 + $time['second'];
             }
             if ($game == null) {
-                $game = new \App\Domain\Game($_SESSION["user_id"],json_encode( $_SESSION["currents_cards"]), $_SESSION["user_penality"], json_encode($time));
+                $game = new Game($_SESSION["user_id"],json_encode( $_SESSION["currents_cards"]), $_SESSION["user_penality"], json_encode($time));
                 $this->em->persist($game);
 
             } else {

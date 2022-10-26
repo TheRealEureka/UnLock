@@ -22,6 +22,12 @@ class UserController
         $this->view = $view;
         $this->userService = $userService;
     }
+
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     */
     public function login(ServerRequestInterface $request, ResponseInterface $response) : ResponseInterface
     {
         $args = $request->getParsedBody();
@@ -53,7 +59,6 @@ class UserController
     public function signup(ServerRequestInterface $request, ResponseInterface $response) : ResponseInterface
     {
         $args = $request->getParsedBody();
-        $error = "";
         if (isset($args["username"]) && isset($args["password"]) && isset($args["password_confirm"])) {
             $signup = $this->userService->signup($args["username"], $args["password"], $args["password_confirm"]);
             if ($signup === false) {
@@ -76,6 +81,7 @@ class UserController
             'error' => $error
         ]);
     }
+
     public function logout(ServerRequestInterface $request, ResponseInterface $response) : ResponseInterface
     {
         unset($_SESSION["user_id"]);

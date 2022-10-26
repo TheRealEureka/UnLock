@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Service\GameService;
+use Doctrine\ORM\Exception\ORMException;
+use Doctrine\ORM\OptimisticLockException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Views\Twig;
@@ -31,7 +33,6 @@ class GameController
             'conn' => isset($_SESSION['user_id']),
             'name' => $_SESSION["username"] ?? "",
             'error' => ""
-
         ]);
     }
 
@@ -44,6 +45,7 @@ class GameController
     {
         if (!$_SESSION["currents_cards"] == null) {
             if (array_search("60", $_SESSION["currents_cards"])) {
+                $this->clearGameData();
                 return $this->view->render($response, 'victory.html');
             }
         }
@@ -58,12 +60,13 @@ class GameController
      */
     public function loose(ServerRequestInterface $request, ResponseInterface $response, array $args) : ResponseInterface
     {
+        $this->clearGameData();
         return $this->view->render($response, 'defeat.html');
     }
+
     /**
-     * @throws SyntaxError
-     * @throws RuntimeError
-     * @throws LoaderError
+     * @throws OptimisticLockException
+     * @throws ORMException
      */
     public function save(ServerRequestInterface $request, ResponseInterface $response, array $args) : ResponseInterface
     {
@@ -71,16 +74,23 @@ class GameController
         $response = $response->withStatus(302);
         return $response->withHeader('Location', '/play');
     }
+
     public function load(ServerRequestInterface $request, ResponseInterface $response, array $args) : ResponseInterface
     {
         $this->gameService->load();
+        $response = $response->withStatus(302);
         if($this->gameService->load()){
-            $response = $response->withStatus(302);
             return $response->withHeader('Location', '/play');
         }
-        $response = $response->withStatus(302);
         return $response->withHeader('Location', '/');
 
+    }
+
+    private function clearGameData(){
+        unset($_SESSION["currents_cards"]);
+        unset($_SESSION["user_time"]);
+        unset($_SESSION["starting_timer"]);
+        unset($_SESSION["user_penality"]);
     }
 
 }

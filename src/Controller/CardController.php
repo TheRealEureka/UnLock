@@ -70,8 +70,6 @@ class CardController
             $time['second'] = 60 + $time['second'];
         }
 
-
-
         $cards = array();
         foreach ($_SESSION["currents_cards"] as $key => $value) {
             $card = $this->cardService->get($value);
@@ -94,21 +92,18 @@ class CardController
     {
         $id = strtoupper($request->getParsedBody()['id']);
         if (strlen($id) >3) {
-            $to_add = "";
             switch ($id) {
                 case '1247':
-                    $to_add = "91";
+                    $this->add("91");
                     break;
                 case '4233':
-                    $to_add = "60";
+                    $this->add("60");
                     break;
                 case '6815':
                     $response = $response->withStatus(302);
                     return $response->withHeader('Location', '/win');
             }
-            if ($to_add != "") {
-                $this->add($to_add);
-            }
+
         } elseif (isset($_SESSION["currents_cards"])) {
             if (!in_array($id, $_SESSION["currents_cards"]) && $this->cardService->exist($id)) {
                 $type = $this->cardService->getType($id);
@@ -119,15 +114,13 @@ class CardController
             }
         }
 
-
         $response = $response->withStatus(302);
         return $response->withHeader('Location', '/play');
     }
 
     public function hideCard(ServerRequestInterface $request, ResponseInterface $response, array $args) : ResponseInterface
     {
-        $id = strtoupper($args['id']);
-        $this->splice($id);
+        $this->splice(strtoupper($args['id']));
 
         $response = $response->withStatus(302);
         return $response->withHeader('Location', '/play');
@@ -144,6 +137,7 @@ class CardController
             }
         }
     }
+
     private function add($id) : void
     {
         if ($this->checkRequirments($id)) {
@@ -156,6 +150,7 @@ class CardController
             }
         }
     }
+
     private function checkRequirments($id): bool
     {
         $req = $this->cardService->getRequire($id);
