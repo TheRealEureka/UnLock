@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../data/style/accueil.css">
 </head>
 <body>
-<div class="lologo"><img id="logo" src="../data/assets/UNLOCK.webp" alt="logo" ></div>
+<div class="lologo"><img id="logo" src="../data/assets/UNLOCK.webp" alt="logo"></div>
 <div id="listeBoutons">
 
     <a href="/play">
@@ -19,7 +19,9 @@
         </a>
     {% endif %}
     <a href="https://github.com/TheRealEureka/UnLock">
-        <button id="github"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="logo_github"> Notre repo Github</button>
+        <button id="github"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="logo_github"> Notre repo
+            Github
+        </button>
     </a>
 </div>
 {% if error != "" %}
@@ -29,27 +31,32 @@
 
 
     <div class="forms">
-    <form class="login" method="post" action="/login">
-        <label for="username">Nom d'utilisateur :
-        <input type="text" name="username" /></label>
-        <label for="password">Mot de passe :
-        <input type="password" name="password" /></label>
-        <input type="submit" value="Se connecter" />
-    </form>
-    <div class="separator"></div>
-    <form class="signup" method="post" action="/signup">
-        <label for="username">Nom d'utilisateur :
-        <input type="text" name="username" /></label>
-        <label for="password">Mot de passe :
-        <input type="password" name="password" /></label>
-        <label for="password_confirm">Répétez le mot de passe :
-        <input type="password" name="password_confirm" /></label>
-        <input type="submit" value="S'inscrire" />
-    </form>
-</div>
+        <form class="log" id="login" method="post" action="/login">
+            <p>Connexion</p>
+            <input type="text" placeholder="Nom d'utilisateur" name="username"/>
+            <input type="password" placeholder="Mot de passe" name="password"/>
+            <div class="sub">
+
+                <input type="submit"  value="Se connecter"/>
+            </div>
+        </form>
+        <div class="separator"></div>
+
+        <form class="log" id="signup" method="post" action="/signup">
+            <p>Créer un compte</p>
+            <input type="text" placeholder="Nom d'utilisateur" name="username"/>
+
+            <input type="password" placeholder="Mot de passe" name="password"/>
+
+            <input type="password" placeholder="Répétez le mot de passe :" name="password_confirm"/>
+            <div class="sub">
+                <input type="submit" class="sub" value="S'inscrire"/>
+            </div>
+        </form>
+    </div>
 {% else %}
-<p>Bonjour {{ name }} !</p>
-<a href="/logout">Se déconnecter</a>
+    <p>Bonjour {{ name }} !</p>
+    <a href="/logout">Se déconnecter</a>
 {% endif %}
 <p id="credits">Projet scolaire réalisé par Tristan BELMONT, Kevin BULLY CIMBALURIA, Lucas FARRONI et Clément
     PERRIN.</p>
