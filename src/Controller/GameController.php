@@ -27,7 +27,7 @@ class GameController
      */
     public function start(ServerRequestInterface $request, ResponseInterface $response, array $args) : ResponseInterface
     {
-        return $this->view->render($response, 'index.twig',[
+        return $this->view->render($response, 'index.twig', [
             'conn' => isset($_SESSION['user_id']),
             'name' => $_SESSION["username"] ?? "",
             'error' => ""
@@ -58,7 +58,6 @@ class GameController
      */
     public function loose(ServerRequestInterface $request, ResponseInterface $response, array $args) : ResponseInterface
     {
-            return $this->view->render($response, 'loose.html');
+        return $this->view->render($response, 'defeat.html');
     }
-
 }
