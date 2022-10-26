@@ -14,11 +14,11 @@
         <div id="progress"></div>
     </div>
     <div class="boutons">
-        <button class="button" id="playpauseButton">Save</button>
-        <button class="button" id="playpauseButton">Load</button>
+        <button class="button" id="saveButton" {{ disable }}>Save</button>
+        <button class="button" id="resetButton">Reset</button>
       <!--  <button class="button" id="indice">Indice</button> -->
       <!--  <button class="button" id="machine">Machine</button>-->
-        <button class="button" id="calc">Calculatrice</button>
+        <button class="button" id="calc">Calculator</button>
         <!--<button class="button" id="settings">Parametres</button>-->
     </div>
     <div class="numpadspace" id="card_popup"></div>
@@ -37,16 +37,14 @@
             {% if card.NumCarte() == "6" %}
                 <div><img id="6" src="../data/assets/cards/{{ card.Image()  }}" alt="{{ card.NumCarte()  }}" class="carte"/></div>
                 <script>
-                    let carte = document.getElementById("6");
-                    carte.addEventListener("click", function () {
-                        carte.classList.toggle("rotate");
+                    document.getElementById("6").addEventListener("click", function () {
+                        this.classList.toggle("rotate");
                     });
                 </script>
             {% elseif card.Type() == "trap" %}
                 <div><img id="{{ card.Id() }}" src="../data/assets/cards/{{ card.Image()  }}" alt="{{ card.NumCarte()  }}" class="carte"/></div>
                 <script>
-                    let carte = document.getElementById("{{ card.Id() }}");
-                    carte.addEventListener("click", function () {
+                    document.getElementById("{{ card.Id() }}").addEventListener("click", function () {
                         window.location = "/hide/{{ card.Id() }}";
                     });
                 </script>

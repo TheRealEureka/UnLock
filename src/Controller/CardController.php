@@ -57,6 +57,7 @@ class CardController
              'cards' =>  $cards,
              'cards_back' => $back,
              'timer_start' => $time,
+            'disable' => "disabled"
          ]);
     }
 

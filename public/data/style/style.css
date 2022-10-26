@@ -51,12 +51,12 @@ body {
     background: rgb(255, 255, 255);
 }
 
-.button:hover {
+.button:not(.button:disabled):hover {
     background-color: #bbbbbb;
     color: white;
 }
 
-.button:active {
+.button:not(.button:disabled):active {
     background-color: #636363;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
@@ -207,3 +207,4 @@ body {
 .hidden{
     display:none;
 }
+

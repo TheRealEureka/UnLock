@@ -81,6 +81,6 @@ class UserController
         unset($_SESSION["user_id"]);
         unset($_SESSION["username"]);
         $response = $response->withStatus(302);
-        return $response->withHeader('Location', '/play');
+        return $response->withHeader('Location', '/');
     }
 }
