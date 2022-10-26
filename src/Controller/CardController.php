@@ -57,7 +57,7 @@ class CardController
              'cards' =>  $cards,
              'cards_back' => $back,
              'timer_start' => $time,
-            'disable' => "disabled"
+            'disable' => isset($_SESSION["user_id"]) ? "disabled" : ""
          ]);
     }
 
