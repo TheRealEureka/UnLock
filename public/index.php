@@ -40,6 +40,7 @@ $app->get('/logout', \App\Controller\UserController::class . ':logout');
 $app->get('/win', \App\Controller\GameController::class . ':win');
 $app->get('/loose', \App\Controller\GameController::class . ':loose');
 $app->get('/save', \App\Controller\GameController::class . ':save');
+$app->get('/load', \App\Controller\GameController::class . ':load');
 
 
 

@@ -71,4 +71,16 @@ class GameController
         $response = $response->withStatus(302);
         return $response->withHeader('Location', '/play');
     }
+    public function load(ServerRequestInterface $request, ResponseInterface $response, array $args) : ResponseInterface
+    {
+        $this->gameService->load();
+        if($this->gameService->load()){
+            $response = $response->withStatus(302);
+            return $response->withHeader('Location', '/play');
+        }
+        $response = $response->withStatus(302);
+        return $response->withHeader('Location', '/');
+
+    }
+
 }

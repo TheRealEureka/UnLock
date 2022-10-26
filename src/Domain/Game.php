@@ -23,17 +23,17 @@ final class Game
     #[Column(name: 'user_penality', type: 'string', unique: false, nullable: false)]
     private string $user_penality;
 
-    #[Column(name: 'user_time', type: 'string', unique: false, nullable: false)]
-    private string $user_time;
+    #[Column(name: 'starting_timer', type: 'string', unique: false, nullable: false)]
+    private string $starting_timer;
 
 
 
-    public function __construct(string $id_user, string $currents_cards, string $user_penality, string $user_time)
+    public function __construct(string $id_user, string $currents_cards, string $user_penality, string $starting_timer)
     {
         $this->id_user = $id_user;
         $this->currents_cards = $currents_cards;
         $this->user_penality = $user_penality;
-        $this->user_time = $user_time;
+        $this->starting_timer = $starting_timer;
     }
 
     /**
@@ -71,9 +71,9 @@ final class Game
     /**
      * @return string
      */
-    public function getUserTime(): string
+    public function getStartingTimer(): string
     {
-        return $this->user_time;
+        return $this->starting_timer;
     }
 
     /**
@@ -93,11 +93,11 @@ final class Game
     }
 
     /**
-     * @param string $user_time
+     * @param string $starting_timer
      */
-    public function setUserTime(string $user_time): void
+    public function setStartingTimer(string $starting_timer): void
     {
-        $this->user_time = $user_time;
+        $this->starting_timer = $starting_timer;
     }
 
 

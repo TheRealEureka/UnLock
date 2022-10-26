@@ -55,11 +55,11 @@ class CardController
 
 
         $played = explode(":", date_diff(new DateTime(), new DateTime(date('m/d/Y H:i:s', $_SESSION['user_time'])))->format('%i:%s'));
+
         $played = array(
             "minutes" => $played[0],
             "second" => $played[1],
         );
-        $this->cardService->log(print_r($played,true));
 
         $time['minutes'] =  ($_SESSION['starting_timer']['minutes'] - $played['minutes']) - $_SESSION['user_penality']; ;
 
@@ -70,7 +70,6 @@ class CardController
             $time['second'] = 60 + $time['second'];
         }
 
-        $this->cardService->log(print_r($time,true));
 
 
         $cards = array();
