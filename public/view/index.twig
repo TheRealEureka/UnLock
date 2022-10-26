@@ -19,11 +19,11 @@
         </button>
     </a>
 </div>
+
 {% if error != "" %}
     <div class="error">{{ error }}</div>
 {% endif %}
 {% if conn == false %}
-
 
     <div class="forms">
         <form class="log" id="login" method="post" action="/login">
@@ -49,9 +49,18 @@
             </div>
         </form>
     </div>
+
 {% else %}
-    <p>Bonjour {{ name }} !</p>
-    <a href="/logout">Se déconnecter</a>
+
+    <div class="connected">
+        <p>Bonjour {{ name }} !</p>
+        <a href="/logout">Se déconnecter</a>
+    </div>
+
+
+
+
+
 {% endif %}
 <p id="credits">Projet scolaire réalisé par Tristan BELMONT, Kevin BULLY CIMBALURIA, Lucas FARRONI et Clément
     PERRIN.</p>
