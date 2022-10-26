@@ -33,9 +33,10 @@ $app->get('/', \App\Controller\GameController::class . ':start');
 
 $app->get('/play', \App\Controller\CardController::class . ':show');
 $app->post('/display', \App\Controller\CardController::class . ':addCard');
-$app->post('/hide', \App\Controller\CardController::class . ':hideCard');
+$app->get('/hide/{id}', \App\Controller\CardController::class . ':hideCard');
 $app->post('/login', \App\Controller\UserController::class . ':login');
 $app->post('/signup', \App\Controller\UserController::class . ':signup');
+$app->get('/logout', \App\Controller\UserController::class . ':logout');
 $app->get('/win', \App\Controller\GameController::class . ':win');
 $app->get('/loose', \App\Controller\GameController::class . ':loose');
 

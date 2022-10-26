@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
 
-#[Entity, Table(name: 'Game')]
+#[Entity, Table(name: 'game')]
 final class Game
 {
     #[Id, Column(name: 'id', type: 'integer'), GeneratedValue(strategy: 'AUTO')]

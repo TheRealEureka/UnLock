@@ -47,7 +47,7 @@ class CardController
         foreach ($_SESSION["currents_cards"] as $key => $value) {
             $card = $this->cardService->get($value);
             if ($card != null && isset($card[0])) {
-                $cards[$key] = $card[0]->getImage();
+                $cards[$key] = $card[0];
             } else {
                 unset($_SESSION["currents_cards"][$key]);
             }
@@ -56,7 +56,7 @@ class CardController
         return $this->view->render($response, 'game.twig', [
              'cards' =>  $cards,
              'cards_back' => $back,
-             'timer_start' => "59:50",
+             'timer_start' => $time,
          ]);
     }
 
@@ -92,7 +92,7 @@ class CardController
 
     public function hideCard(ServerRequestInterface $request, ResponseInterface $response, array $args) : ResponseInterface
     {
-        $id = strtoupper($request->getParsedBody()['id']);
+        $id = strtoupper($args['id']);
         $this->splice($id);
 
         $response = $response->withStatus(302);

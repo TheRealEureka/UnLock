@@ -26,18 +26,17 @@ class UserController
     {
         $args = $request->getParsedBody();
         $error = "";
-        if(isset($args["username"]) && isset($args["password"])){
+        if (isset($args["username"]) && isset($args["password"])) {
             $login = $this->userService->login($args["username"], $args["password"]);
-            if($login === false){
+            if ($login === false) {
                 $error = "Identifiants incorrects";
-            }else{
+            } else {
                 $_SESSION["user_id"] = $login;
                 $_SESSION["username"] = $args["username"];
             }
-
         }
 
-        return $this->view->render($response, 'index.twig',[
+        return $this->view->render($response, 'index.twig', [
             'conn' => isset($_SESSION['user_id']),
             'name' => $_SESSION["username"] ?? "",
             'error' => $error
@@ -55,27 +54,33 @@ class UserController
     {
         $args = $request->getParsedBody();
         $error = "";
-        if(isset($args["username"]) && isset($args["password"]) && isset($args["password_confirm"])){
+        if (isset($args["username"]) && isset($args["password"]) && isset($args["password_confirm"])) {
             $signup = $this->userService->signup($args["username"], $args["password"], $args["password_confirm"]);
-            if($signup === false){
-                if($args["password"] != $args["password_confirm"]) {
+            if ($signup === false) {
+                if ($args["password"] != $args["password_confirm"]) {
                     $error = "Les mots de passe ne correspondent pas / Ne sont pas assez longs";
-                }else{
+                } else {
                     $error = "Le nom d'utilisateur est déjà utilisé";
                 }
-            }else{
+            } else {
                 $_SESSION["user_id"] = $signup;
                 $_SESSION["username"] = $args["username"];
                 $error = "Inscription réussie";
             }
-        }
-        else{
+        } else {
             $error = "Veuillez remplir tous les champs";
         }
-        return $this->view->render($response, 'index.twig',[
+        return $this->view->render($response, 'index.twig', [
             'conn' => isset($_SESSION['user_id']),
             'name' => $_SESSION["username"] ?? "",
             'error' => $error
         ]);
+    }
+    public function logout(ServerRequestInterface $request, ResponseInterface $response) : ResponseInterface
+    {
+        unset($_SESSION["user_id"]);
+        unset($_SESSION["username"]);
+        $response = $response->withStatus(302);
+        return $response->withHeader('Location', '/play');
     }
 }

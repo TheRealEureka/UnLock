@@ -34,16 +34,24 @@
             <input type="submit" value="Submit">
         </form>
         {% for card in cards %}
-            {% if card == "6.png" %}
-                <div><img id="6" src="../data/assets/cards/{{ card }}" alt="{{ card }}" class="carte"/></div>
+            {% if card.NumCarte() == "6" %}
+                <div><img id="6" src="../data/assets/cards/{{ card.Image()  }}" alt="{{ card.NumCarte()  }}" class="carte"/></div>
                 <script>
                     let carte = document.getElementById("6");
                     carte.addEventListener("click", function () {
                         carte.classList.toggle("rotate");
                     });
                 </script>
+            {% elseif card.Type() == "trap" %}
+                <div><img id="{{ card.Id() }}" src="../data/assets/cards/{{ card.Image()  }}" alt="{{ card.NumCarte()  }}" class="carte"/></div>
+                <script>
+                    let carte = document.getElementById("{{ card.Id() }}");
+                    carte.addEventListener("click", function () {
+                        window.location = "/hide/{{ card.Id() }}";
+                    });
+                </script>
             {% else %}
-                <div><img src="../data/assets/cards/{{ card }}" alt="{{ card }}" class="carte" /></div>
+                <div><img src="../data/assets/cards/{{ card.Image()  }}" alt="{{ card.NumCarte()  }}" class="carte" /></div>
             {% endif %}
         {% endfor %}
 

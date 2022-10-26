@@ -48,7 +48,7 @@ final class Card
         return $this->id;
     }
 
-    public function getNumCarte(): int
+    public function getNumCarte(): string
     {
         return $this->numCarte;
     }
