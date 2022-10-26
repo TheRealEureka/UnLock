@@ -42,10 +42,10 @@
                     });
                 </script>
             {% elseif card.Type() == "trap" %}
-                <div><img id="{{ card.Id() }}" src="../data/assets/cards/{{ card.Image()  }}" alt="{{ card.NumCarte()  }}" class="carte"/></div>
+                <div><img id="{{ card.NumCarte() }}" src="../data/assets/cards/{{ card.Image()  }}" alt="{{ card.NumCarte()  }}" class="carte"/></div>
                 <script>
-                    document.getElementById("{{ card.Id() }}").addEventListener("click", function () {
-                        window.location = "/hide/{{ card.Id() }}";
+                    document.getElementById("{{ card.NumCarte() }}").addEventListener("click", function () {
+                        window.location = "/hide/{{ card.NumCarte() }}";
                     });
                 </script>
             {% else %}
