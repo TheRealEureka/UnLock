@@ -59,4 +59,8 @@ final class CardService
         return $req[0]->getType() == null ? null : $req[0]->getType();
 
     }
+    public function log($str)
+    {
+        $this->logger->info($str);
+    }
 }

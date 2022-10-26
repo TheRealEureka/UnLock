@@ -30,25 +30,49 @@ class CardController
      */
     public function show(ServerRequestInterface $request, ResponseInterface $response, array $args) : ResponseInterface
     {
-        $time = "";
+        $time = array(
+            "minutes" => 60,
+            "second" => 0
+        );
         $back = $this->cardService->getBack();
-        if (isset($_SESSION['user_time'])) {
-            $time = date_diff(new DateTime(), new DateTime(date('m/d/Y H:i:s', $_SESSION['user_time'])))->format('%i:%s');
-        } else {
-            $date = new DateTimeImmutable();
-            $_SESSION['user_time'] = $date->getTimestamp();
-            $_SESSION['user_penality'] = 0;
-            $_SESSION["currents_cards"] = ["P1","15","24","55","H","6","R"];
-        }
+
         if (!isset($_SESSION['currents_cards'])) {
             $_SESSION["currents_cards"] = ["P1","15","24","55","H","6","R"];
         }
-        if ($_SESSION['user_penality'] !== 0) {
-
-            $times =  explode(":", $time);
-            $times[0] += $_SESSION['user_penality'];
-            $time = $times[0] . ":" . $times[1];
+        if(!isset($_SESSION['user_time']))
+        {
+            $date = new DateTimeImmutable();
+            $_SESSION['user_time'] = $date->getTimestamp();
         }
+        if(!isset($_SESSION['user_penality']))
+        {
+            $_SESSION['user_penality'] = 0;
+        }
+        if(!isset($_SESSION['starting_timer']))
+        {
+            $_SESSION['starting_timer'] = $time;
+        }
+
+
+        $played = explode(":", date_diff(new DateTime(), new DateTime(date('m/d/Y H:i:s', $_SESSION['user_time'])))->format('%i:%s'));
+        $played = array(
+            "minutes" => $played[0],
+            "second" => $played[1],
+        );
+        $this->cardService->log(print_r($played,true));
+
+        $time['minutes'] =  ($_SESSION['starting_timer']['minutes'] - $played['minutes']) - $_SESSION['user_penality']; ;
+
+        $time['second'] =   $_SESSION['starting_timer']['second'] - $played['second'];
+        if($time['second'] < 0 && $time['minutes'] > 0)
+        {
+            $time['minutes']--;
+            $time['second'] = 60 + $time['second'];
+        }
+
+        $this->cardService->log(print_r($time,true));
+
+
         $cards = array();
         foreach ($_SESSION["currents_cards"] as $key => $value) {
             $card = $this->cardService->get($value);
@@ -62,7 +86,7 @@ class CardController
         return $this->view->render($response, 'game.twig', [
              'cards' =>  $cards,
              'cards_back' => $back,
-             'timer_start' => $time,
+             'timer' => $time,
             'disable' => isset($_SESSION["user_id"]) ? "" : "disabled"
          ]);
     }

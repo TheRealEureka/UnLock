@@ -1,95 +1,61 @@
 console.log("timer.js loaded");
 
-let timer = "60:00";
+
 
 let timerElement = document.getElementById("timer");
 let elem = document.getElementById("progress");
 
 let interval;
 
-function startTimer(time = '60:00') {
-    console.log(time)
-    if(time !== "" && time !== '60:00')
+function startTimer(timer) {
+    if(timer.minute >= 0 && timer.second >= 0 && timer.minute <= 60 && timer.second <= 60)
     {
-         time  = time.split(":");
-         if(time[0]<=60 && time[1] >=0 && time[0]>0 && time[1] <= 60)
-         {
+        interval = setInterval(function () {
+            let disp_mins = "";
+            let disp_secs = "";
+            if(timer.minute !== 0 && timer.second >= 0) {
+                timer.second--;
+                if (timer.second < 0) {
+                    timer.minute--;
+                    timer.second = 59;
+                    if (timer.minute < 10) {
+                        disp_mins = "0" + timer.minute;
+                    }
+                }
+                disp_mins = timer.minute;
+                disp_secs = timer.second;
+                if (timer.second < 10) {
+
+                    disp_secs = "0" + timer.second;
+                }
+                timerElement.innerText = disp_mins + ":" + disp_secs;
+                elem.style.width = ((60-timer.minute) * 1.66) + "%";
+                if (timer.minute <= 0 && timer.second <= 0) {
+                    end();
+                    return;
+                }
 
 
-        let minutes_temp =60 -  time[0];
-        let seconds_temp = 0 - time[1];
-        //calcule the diffrence between the current time and the time that the user entered
-        if(seconds_temp < 0)
-        {
-            seconds_temp = 60 + seconds_temp;
-            minutes_temp--;
-        }
-        time = minutes_temp + ":" + seconds_temp;
-        timer = time;
+                if (timer.minute <= 4) {
+                    timerElement.style.color = "red";
+                    timerElement.style.textShadow = "2px 0 0 black";
+                    document.getElementById("progress").style.backgroundColor = "red";
+                }
+            }
+        }, 1000);
     }
-         else{
-             timer = "00:00";
-         }
+    else{
+        end()
     }
-
-    timerElement.innerText = timer;
-    let timerArray = timer.split(":");
-    let minutes = timerArray[0];
-    let seconds = timerArray[1];
-
-    interval = setInterval(function () {
-       if(minutes !== 0 && seconds >= 0) {
-           seconds--;
-           if (seconds < 0) {
-               minutes--;
-               seconds = 59;
-               if (minutes < 10) {
-                   minutes = "0" + minutes;
-               }
-           }
-
-           if (seconds < 10) {
-
-               seconds = "0" + seconds;
-           }
-
-           if (minutes <= 0 && seconds <= 0) {
-               seconds = "00";
-               minutes = "00";
-               timer = minutes + ":" + seconds;
-               timerElement.innerText = timer;
-               clearInterval(interval);
-               console.log("end")
-               window.location = "/loose";
-
-               return;
-           }
-
-
-           if (minutes <= 4) {
-               timerElement.style.color = "red";
-               timerElement.style.textShadow = "2px 0 0 black";
-               document.getElementById("progress").style.backgroundColor = "red";
-           }
-       }
-       else{
-           seconds = "00";
-           minutes = "00";
-           timer = minutes + ":" + seconds;
-           timerElement.innerText = timer;
-           clearInterval(interval);
-           console.log("end")
-           window.location = "/loose";
-
-           return;
-       }
-        timer = minutes + ":" + seconds;
-        elem.style.width = ((60-minutes) * 1.66) + "%";
-
-        timerElement.innerText = timer;
-    }, 1000);
-
 
 }
 
-
+function end(){
+    timerElement.innerText = "00:00";
+    if(interval)
+    {
+        clearInterval(interval);
+    }
+    console.log("end")
+    window.location = "/loose";
+}

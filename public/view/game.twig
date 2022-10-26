@@ -70,7 +70,11 @@
 <script src="../data/js/interact.js"></script>
 
 <script>
- startTimer("{{ timer_start }}");
+ startTimer({
+        minute : {{ timer.minutes }},
+        second : {{ timer.second }}
+ });
+
 </script>
 </body>
 </html>
