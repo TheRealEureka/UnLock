@@ -56,7 +56,7 @@ class CardController
         return $this->view->render($response, 'game.twig', [
              'cards' =>  $cards,
              'cards_back' => $back,
-             'timer_start' => $time
+             'timer_start' => "59:50",
          ]);
     }
 

@@ -8,6 +8,7 @@ let elem = document.getElementById("progress");
 let interval;
 
 function startTimer(time = '60:00') {
+    console.log(time)
     if(time !== "" && time !== '60:00')
     {
          time  = time.split(":");
@@ -37,7 +38,7 @@ function startTimer(time = '60:00') {
     let seconds = timerArray[1];
 
     interval = setInterval(function () {
-       if(timer !== "00:00") {
+       if(minutes !== 0 && seconds >= 0) {
            seconds--;
            if (seconds < 0) {
                minutes--;
@@ -58,7 +59,8 @@ function startTimer(time = '60:00') {
                timer = minutes + ":" + seconds;
                timerElement.innerText = timer;
                clearInterval(interval);
-               window.location = "/timeout";
+               console.log("end")
+               window.location = "/loose";
 
                return;
            }
@@ -76,7 +78,8 @@ function startTimer(time = '60:00') {
            timer = minutes + ":" + seconds;
            timerElement.innerText = timer;
            clearInterval(interval);
-           window.location = "/timeout";
+           console.log("end")
+           window.location = "/loose";
 
            return;
        }

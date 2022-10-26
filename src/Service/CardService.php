@@ -48,8 +48,8 @@ final class CardService
         $req=$qb->select("c.image_back")
             ->where($qb->expr()->isNotNull("c.image_back"))
            ->getQuery()->getResult();
-        $this->logger->info("CardService::getBack()".print_r($req,true));
-        return $req;
+        $this->logger->info("CardService::getBack()".print_r($req, true));
 
+        return $req;
     }
 }
