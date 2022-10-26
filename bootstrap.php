@@ -53,8 +53,7 @@ $container->set(EntityManager::class, static function (Container $c): EntityMana
 $container->set('view', function () {
     return Twig::create(
         __DIR__ . '/public/view',
-        ['cache' => false]
-        //['cache' => __DIR__ . '/cache']
+        ['cache' => __DIR__ . '/cache']
     );
 });
 $container->set(CardService::class, static function (Container $c) {

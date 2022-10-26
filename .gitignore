@@ -41,5 +41,5 @@ vendor/pkg/
 pyenv
 Vagrantfile
 /.php-cs-fixer.cache
-logs/*
+logs/
 cache/
