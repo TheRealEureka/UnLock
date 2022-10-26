@@ -12,7 +12,13 @@
 ### [Lucas FARRONI](https://github.com/lucasfarroni), 👨‍🦲 The Bald Master 👨‍🦲
 ### [Clément PERRIN](https://github.com/Alfiov), 😠 The Clément Master 😠
 
+## Features
 
+* Display cards
+* Hide penalty card
+* Navigate to stack
+* Login / sign up
+* Save / Load game
 
 # Setup App
 
