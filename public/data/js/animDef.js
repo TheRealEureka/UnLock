@@ -1,6 +1,4 @@
 let lose = document.getElementById('loser');
-let max = 10;
-let min = -10;
 let i = 0;
 let hei = 100;
 
@@ -23,7 +21,6 @@ function animLose(){
             {transform: 'translateY('+hei+'px)'},
             {transform: 'rotate('+-hei+'deg)'},
             {transform: 'translateY(0px)'}
-
         ],{
             duration: 1000,
             iterations: Infinity,

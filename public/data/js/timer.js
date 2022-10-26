@@ -1,7 +1,3 @@
-console.log("timer.js loaded");
-
-
-
 let timerElement = document.getElementById("timer");
 let elem = document.getElementById("progress");
 
