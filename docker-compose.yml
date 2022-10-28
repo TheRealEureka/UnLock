@@ -17,12 +17,14 @@ services:
       restart: on-failure
       ports:
         - "3306:3306"
+      volumes:
+        - "./init/schema.sql:/docker-entrypoint-initdb.d/1.sql"
+        - "./init/data.sql:/docker-entrypoint-initdb.d/2.sql"
       environment:
         - MARIADB_DATABASE=unlock
         - MARIADB_ROOT_USER=root
         - MARIADB_ROOT_PASSWORD=root
         - MARIADB_USER=test
         - MARIADB_PASSWORD=test
-      volumes:
-        - ./.docker/mariadb:/var/lib/mysql
+
    

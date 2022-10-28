@@ -60,7 +60,7 @@ docker-compose up --build
 ```
 php vendor/bin/doctrine orm:schema-tool:create
 ```
-6. Finaly, import init.sql into the database
+6. Finaly, import schema.sql into the database
 
 # Having troubles ?
 
