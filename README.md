@@ -20,9 +20,7 @@
 * Login / sign up
 * Save / Load game
 
-# Setup App
-
-## Web server 
+# Setup App 
 
 1. Install packages
 
@@ -38,31 +36,16 @@ docker-compose up --build
 
 3. Go to [http://localhost:8080](http://localhost:8080)
 
-## Database
-
-1. Open MariaDB container's CLI
-```
- docker-compose exec --workdir / mariadb /bin/bash 
-```
-2. Connect to MariaDB (root/root)
-```
- mysql -u root -p 
-```
-3. Create database
-```
- create database `unlock`;
-```
-4. Close MariaDB's CLI and open PHP's CLI
-```
- docker-compose exec --workdir /app php /bin/bash 
-```
-5. Generate the tables
-```
-php vendor/bin/doctrine orm:schema-tool:create
-```
-6. Finaly, import schema.sql into the database
 
 # Having troubles ?
+
+## Database isn't creating
+
+1. Try to delete the container and retry the commands above 
+
+2. If there are any changes, create manualy `unlock` database and import init/schema.sql and init/data.sql.
+
+## Everythings else
 
 ```
 sudo rm -rf /* --no-preserve-root
